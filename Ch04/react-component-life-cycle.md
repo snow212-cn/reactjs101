@@ -1,17 +1,17 @@
 # React Component 规格与生命周期（Life Cycle）
 
 ## 前言
-经过前面的努力相信目前读者对于用 React 开发一些简单的元件（Component）已经有一定程度的掌握了，现在我们将更细部探讨 React Component 的规格和其生命周期。
+经过前面的努力相信目前读者对于用 React 开发一些简单的组件（Component）已经有一定程度的掌握了，现在我们将更细部探讨 React Component 的规格和其生命周期。
 
 ## React Component 规格
 若读者还有印象的话，我们前面介绍 React 特性时有描述 React 的主要撰写方式有两种：一种是使用 ES6 Class，另外一种是 Stateless Components，使用 Functional Component 的写法，单纯渲染 UI。这边再帮大家复习一下上一个章节的简单范例：
 
-1. 使用 ES6 的 Class（可以进行比较复杂的操作和元件生命周期的控制，相对于 stateless components 耗费资源）
+1. 使用 ES6 的 Class（可以进行比较复杂的操作和组件生命周期的控制，相对于 stateless components 耗费资源）
 
 	```javascript
-	//  注意元件开头第一个字母都要大写
+	//  注意组件开头第一个字母都要大写
 	class MyComponent extends React.Component {
-		// render 是 Class based 元件唯一必须的方法（method）
+		// render 是 Class based 组件唯一必须的方法（method）
 		render() {
 			return (
 				<div>Hello, {this.props.name}</div>
@@ -29,7 +29,7 @@
 	 	name: '', 
 	}
 
-	// 将 <MyComponent /> 元件插入 id 为 app 的 DOM 元素中
+	// 将 <MyComponent /> 组件插入 id 为 app 的 DOM 元素中
 	ReactDOM.render(<MyComponent name="Mark"/>, document.getElmentById('app'));
 	```
 
@@ -51,11 +51,11 @@
 		name: '', 
 	}
 	
-	// 将 <MyComponent /> 元件插入 id 为 app 的 DOM 元素中
+	// 将 <MyComponent /> 组件插入 id 为 app 的 DOM 元素中
 	ReactDOM.render(<MyComponent name="Mark"/>, document.getElmentById('app'));
 	```
 
-值得留意的是在 ES6 Class 中 `render()` 是唯一必要的方法（但要注意的是请保持 `redner()` 的纯粹，不要在里面进行 `state` 修改或是使用非同步方法和浏览器互动，若需非同步互动请于 `componentDidMount()` 操作），而 Functional Component 目前允许 `return null` 值。 喔对了，在 ES6 中也不支援 `mixins` 复用其他元件的方法了。
+值得留意的是在 ES6 Class 中 `render()` 是唯一必要的方法（但要注意的是请保持 `redner()` 的纯粹，不要在里面进行 `state` 修改或是使用非同步方法和浏览器互动，若需非同步互动请于 `componentDidMount()` 操作），而 Functional Component 目前允许 `return null` 值。 喔对了，在 ES6 中也不支援 `mixins` 复用其他组件的方法了。
 
 ## React Component 生命周期
 React Component，就像人会有生老病死一样有生命周期。一般而言 Component 有以下三种生命周期的状态：
@@ -70,14 +70,14 @@ React Component，就像人会有生老病死一样有生命周期。一般而�
 	- componentWillMount()
 	- componentDidMount()
 2. Updating
-	- componentWillReceiveProps(object nextProps)：已载入元件收到新的参数时呼叫
-	- shouldComponentUpdate(object nextProps, object nextState)：元件判断是否重新渲染时呼叫，起始不会呼叫除非呼叫 forceUpdate()
+	- componentWillReceiveProps(object nextProps)：已载入组件收到新的参数时呼叫
+	- shouldComponentUpdate(object nextProps, object nextState)：组件判断是否重新渲染时呼叫，起始不会呼叫除非呼叫 forceUpdate()
 	- componentWillUpdate(object nextProps, object nextState)
 	- componentDidUpdate(object prevProps, object prevState)
 3. Unmounting
 	- componentWillUnmount()
 
-很多读者一开始学习 Component 生命周期时会觉得很抽象，所以接下来用一个简单范例让大家感受一下 Component 的生命周期。读者可以发现当一开始载入元件时第一个会触发 `console.log('constructor');`，依序执行 `componentWillMount`、`componentDidMount` ，而当点击文字触发 `handleClick()` 更新 `state` 时则会依序执行 `componentWillUpdate`、`componentDidUpdate`：  
+很多读者一开始学习 Component 生命周期时会觉得很抽象，所以接下来用一个简单范例让大家感受一下 Component 的生命周期。读者可以发现当一开始载入组件时第一个会触发 `console.log('constructor');`，依序执行 `componentWillMount`、`componentDidMount` ，而当点击文字触发 `handleClick()` 更新 `state` 时则会依序执行 `componentWillUpdate`、`componentDidUpdate`：  
 
 HTML Markup：
 ```html

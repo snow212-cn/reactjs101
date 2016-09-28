@@ -160,7 +160,7 @@ $ npm install --save-dev babel-core babel-eslint babel-loader babel-preset-es201
 	
 	// 用 react-redux 的 Provider 包起来将 store 传递下去，让每个 components 都可以存取到 state
 	// 这边使用 browserHistory 当做 history，并使用 material-ui 的 MuiThemeProvider 包裹整个 components
-	// 由于这边是简易的 App 我们设计了 Main 为母模版，其有两个子元件 HomePageContainer 和 ResultPageContainer，其中 HomePageContainer 为根位置的子元件
+	// 由于这边是简易的 App 我们设计了 Main 为母模版，其有两个子组件 HomePageContainer 和 ResultPageContainer，其中 HomePageContainer 为根位置的子组件
 	ReactDOM.render(
 	  <Provider store={store}>
 	    <MuiThemeProvider>
@@ -448,7 +448,7 @@ $ npm install --save-dev babel-core babel-eslint babel-loader babel-preset-es201
 	```javascript
 	import React from 'react';
 	import { Link } from 'react-router';
-	// 引入 material-ui 的卡片式元件
+	// 引入 material-ui 的卡片式组件
 	import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 	// 引入 material-ui 的 RaisedButton
 	import RaisedButton from 'material-ui/RaisedButton';

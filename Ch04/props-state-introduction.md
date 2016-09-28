@@ -4,7 +4,7 @@
 在前面的章节中我们已经对于 React 和 JSX 有初步的认识，我们也了解到 React Component 事实上可以视为显示 UI 的一个状态机（state machine），而这个状态机根据不同的 state（透过 `setState()` 修改）和 props（由父元素传入），Component 会出现对应的显示结果。本章将使用 [React 官网首页上的范例](https://facebook.github.io/react/index.html)（使用 ES6+）来更进一步说明 Props 和 State 特性及在 React 如何进行事件和表单处理。
 
 ## Props
-首先我们使用 React 官网上的 A Simple Component 来说明 props 的使用方式。由于传入元件的 name 属性为 Mark，故以下程式码将会在浏览器显示 Hello, Mark。针对传入的 props 我们也有验证和预设值的设计，让我们撰写的元件可以更加稳定健壮（robust）。
+首先我们使用 React 官网上的 A Simple Component 来说明 props 的使用方式。由于传入组件的 name 属性为 Mark，故以下程式码将会在浏览器显示 Hello, Mark。针对传入的 props 我们也有验证和预设值的设计，让我们撰写的组件可以更加稳定健壮（robust）。
 
 HTML Markup：
 
@@ -163,7 +163,7 @@ HTML Markup：
 app.js：
 
 ```javascript
-// TodoApp 元件中包含了显示 Todo 的 TodoList 元件，Todo 的内容透过 props 传入 TodoList 中。由于 TodoList 仅单纯 Render UI 不涉及内部 state 操作是 stateless component，所以使用 Functional Component 写法。需要特别注意的是这边我们用 map function 来迭代 Todos，需要留意的是每个迭代的元素必须要有 unique key 不然会发生错误（可以用自定义 id，或是使用 map function 的第二个参数 index）
+// TodoApp 组件中包含了显示 Todo 的 TodoList 组件，Todo 的内容透过 props 传入 TodoList 中。由于 TodoList 仅单纯 Render UI 不涉及内部 state 操作是 stateless component，所以使用 Functional Component 写法。需要特别注意的是这边我们用 map function 来迭代 Todos，需要留意的是每个迭代的元素必须要有 unique key 不然会发生错误（可以用自定义 id，或是使用 map function 的第二个参数 index）
 const TodoList = (props) => (
 	<ul>
 		{
@@ -174,7 +174,7 @@ const TodoList = (props) => (
 	</ul>
 )
 
-// 整个 App 的主要元件，这边比较重要的是事件处理的部份，内部有
+// 整个 App 的主要组件，这边比较重要的是事件处理的部份，内部有
 class TodoApp extends React.Component {
 	constructor(props) {
 		super(props);

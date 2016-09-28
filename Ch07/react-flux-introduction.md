@@ -89,7 +89,7 @@ $ npm install --save react react-dom flux events
 $ npm install --save-dev babel-core babel-eslint babel-loader babel-preset-es2015 babel-preset-react eslint eslint-config-airbnb eslint-loader eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react html-webpack-plugin webpack webpack-dev-server
 ```
 
-安装好后我们可以设计一下我们的资料夹结构，首先我们在根目录建立 `src`，放置 `script` 的 `source` 。在 `components` 资料夹中我们会放置所有 `components`（个别元件资料夹中会用 `index.js` 输出元件，让引入元件更简洁），另外还有 `actions`、`constants`、`dispatcher`、`stores`，其余设定档则放置于根目录下。
+安装好后我们可以设计一下我们的资料夹结构，首先我们在根目录建立 `src`，放置 `script` 的 `source` 。在 `components` 资料夹中我们会放置所有 `components`（个别组件资料夹中会用 `index.js` 输出组件，让引入组件更简洁），另外还有 `actions`、`constants`、`dispatcher`、`stores`，其余设定档则放置于根目录下。
 
 ![React Flux 资料夹结构](./images/folder.png "React Flux 资料夹结构")
 

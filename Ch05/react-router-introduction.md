@@ -26,7 +26,7 @@ $ npm install --save react react-dom react-router
 $ npm install --save-dev babel-core babel-eslint babel-loader babel-preset-es2015 babel-preset-react eslint eslint-config-airbnb eslint-loader eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react webpack webpack-dev-server html-webpack-plugin
 ```
 
-安装好后我们可以设计一下我们的资料夹结构，首先我们在根目录建立 `src` 和 `res` 资料夹，分别放置 `script` 的 `source` 和静态资源（如：全域使用的 `.css` 和图档）。在 `components` 资料夹中我们会放置所有 `components`（个别元件资料夹中会用 `index.js` 输出元件，让引入元件更简洁），其余设定档则放置于根目录下。
+安装好后我们可以设计一下我们的资料夹结构，首先我们在根目录建立 `src` 和 `res` 资料夹，分别放置 `script` 的 `source` 和静态资源（如：全域使用的 `.css` 和图档）。在 `components` 资料夹中我们会放置所有 `components`（个别组件资料夹中会用 `index.js` 输出组件，让引入组件更简洁），其余设定档则放置于根目录下。
 
 ![React Router 资料夹结构](./images/folder.png "React Router 资料夹结构")
 
@@ -127,16 +127,16 @@ HTML Markup：
 </html>
 ```
 
-以下是 `webpack.config.js` 的进入点 `src/index.js`，负责管理 `Router` 和 `render` 元件。这边我们要先详细讨论的是，为了使用 React Router 功能引入了许多 `react-router` 内部的元件。
+以下是 `webpack.config.js` 的进入点 `src/index.js`，负责管理 `Router` 和 `render` 组件。这边我们要先详细讨论的是，为了使用 React Router 功能引入了许多 `react-router` 内部的组件。
 
 1. Router
 `Router` 是放置 Route 的容器，其本身不定义 routing ，真正 routing 规则由 `Route` 定义。
 
 2. Route
-`Route` 负责 URL 和对应的元件关系，可以有多个 `Route` 规则也可以有嵌套（nested）`Routing`。像下面的例子就是每个页面都会先载入 `App` 元件再载入对应 URL 的元件。
+`Route` 负责 URL 和对应的组件关系，可以有多个 `Route` 规则也可以有嵌套（nested）`Routing`。像下面的例子就是每个页面都会先载入 `App` 组件再载入对应 URL 的组件。
 
 3. history
-`Router` 中有一个属性 `history` 的规则，这边使用我们使用 `hashHistory`，使用 routing 将由 `hash`（#）变化决定。例如：当使用者拜访 `http://www.github.com/`，实际看到的会是 `http://www.github.com/#/`。下列范例若是拜访了 `/about` 则会看到 `http://localhost:8008/#/about` 并载入 `App` 元件再载入 `About` 元件。
+`Router` 中有一个属性 `history` 的规则，这边使用我们使用 `hashHistory`，使用 routing 将由 `hash`（#）变化决定。例如：当使用者拜访 `http://www.github.com/`，实际看到的会是 `http://www.github.com/#/`。下列范例若是拜访了 `/about` 则会看到 `http://localhost:8008/#/about` 并载入 `App` 组件再载入 `About` 组件。
 
 	- hashHistory
 	教学范例使用的，会通过 `hash` 进行对应。好处是简单易用，不用多余设定。
@@ -156,10 +156,10 @@ HTML Markup：
 	```
 
 4. path
-`path` 是对应 URL 的规则。例如：`/repos/torvalds` 会对应到 `/repos/:name` 的位置，并将参数传入 `Repos` 元件中。由 `this.props.params.name` 取得参数。顺带一提，若为查询参数 `/user?q=torvalds` 则由 `this.props.location.query.q` 取得参数。
+`path` 是对应 URL 的规则。例如：`/repos/torvalds` 会对应到 `/repos/:name` 的位置，并将参数传入 `Repos` 组件中。由 `this.props.params.name` 取得参数。顺带一提，若为查询参数 `/user?q=torvalds` 则由 `this.props.location.query.q` 取得参数。
 
 5. IndexRoute
-由于 `/` 情况下 App 元件对应的 `this.props.children` 会是 `undefinded`，所以使用 `IndexRoute` 来解决对应问题。这样当 URL 为 `/` 时将会对应到 Home 元件。不过要注意的是 `IndexRoute` 没有 path 属性。
+由于 `/` 情况下 App 组件对应的 `this.props.children` 会是 `undefinded`，所以使用 `IndexRoute` 来解决对应问题。这样当 URL 为 `/` 时将会对应到 Home 组件。不过要注意的是 `IndexRoute` 没有 path 属性。
 
 ```javascript
 import React from 'react';
@@ -201,16 +201,16 @@ ReactDOM.render(
   */
 ```
 
-由于我们在 `index.js` 使用嵌套 routing，把 App 元件当做每个元件都会载入的母模版，亦即进入每个对应页面载入对应元件前都会先载入 App 元件。这样就可以让每个页面都有导览列连结可以点选，同时可以透过 `props.children` 载入对应 URL 的子元件。
+由于我们在 `index.js` 使用嵌套 routing，把 App 组件当做每个组件都会载入的母模版，亦即进入每个对应页面载入对应组件前都会先载入 App 组件。这样就可以让每个页面都有导览列连结可以点选，同时可以透过 `props.children` 载入对应 URL 的子组件。
 
 1. Link
-`Link` 元件主要用于点击后连结转换，可以想成是 `<a>` 超连结的 React 版本。若是希望当点击时候有对应的 css style，可以使用 `activeStyle`、`activeClassName` 去做设定。范例分别使用于 `index.html`使用传统 `CSS` 载入、Inline Style、外部引入 `Inline Style` 写法。
+`Link` 组件主要用于点击后连结转换，可以想成是 `<a>` 超连结的 React 版本。若是希望当点击时候有对应的 css style，可以使用 `activeStyle`、`activeClassName` 去做设定。范例分别使用于 `index.html`使用传统 `CSS` 载入、Inline Style、外部引入 `Inline Style` 写法。
 
 2. IndexLink
 IndexLink 主要是了处理 `index` 用途，特别注意当 child route `actived` 时，parent route 也会 `actived`。所以我们回首页的连结使用 `<IndexLink />` 内部的 `onlyActiveOnIndex` 属性来解决这个问题。
 
 3. Redirect、IndexRedirect
-这边虽然没有用到，但若读者有需要使用到连结跳转的话可以参考这两个元件，用法类似于 `Route` 和 `IndexRedirect`。
+这边虽然没有用到，但若读者有需要使用到连结跳转的话可以参考这两个组件，用法类似于 `Route` 和 `IndexRedirect`。
 
 以下是 `src/components/App/App.js` 完整程式码：
 
@@ -230,7 +230,7 @@ const App = (props) => (
       <li><Link to="/user" activeClassName="active">User</Link></li>
       <li><NavLink to="/contacts">Contacts</NavLink></li>
     </ul>
-    <!-- 我们将 App 元件当做每个元件都会载入的母模版，因此可以透过 children 载入对应 URL 的子元件 -->
+    <!-- 我们将 App 组件当做每个组件都会载入的母模版，因此可以透过 children 载入对应 URL 的子组件 -->
     {props.children}
   </div>
 );
@@ -242,7 +242,7 @@ App.propTypes = {
 export default App;
 ```
 
-对应的元件内部使用 Functional Component 进行 UI 渲染：
+对应的组件内部使用 Functional Component 进行 UI 渲染：
 
 以下是 `src/components/Repos/Repos.js` 完整程式码：
 
@@ -263,7 +263,7 @@ Repos.propTypes = {
 export default Repos;
 ```
 
-详细的程式码读者可以参考范例资料夹，若读者跟着范例完成的话，可以在终端机上执行 `npm start`，并于浏览器 `http://localhost:8008`看到以下成果，当你点选连结时会切换对应元件并改变 `actived` 状态！
+详细的程式码读者可以参考范例资料夹，若读者跟着范例完成的话，可以在终端机上执行 `npm start`，并于浏览器 `http://localhost:8008`看到以下成果，当你点选连结时会切换对应组件并改变 `actived` 状态！
 
 ![范例成果](./images/example.png "范例成果")
 

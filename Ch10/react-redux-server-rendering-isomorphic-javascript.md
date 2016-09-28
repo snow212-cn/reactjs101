@@ -52,7 +52,7 @@ ReactDOMServer.renderToString(<HelloButton name="Mark" />);
 
 1. 有助于 SEO
 2. Rendering 速度较快，效能较佳
-3. 放弃蹩脚的 Template 语法拥抱 Component 元件化思考，便于维护
+3. 放弃蹩脚的 Template 语法拥抱 Component 组件化思考，便于维护
 4. 尽量前后端共用程式码节省开发时间
 
 不过要注意的是如果有使用 Redux 在 Server Side Rendering 中，其流程相对复杂，不过大致流程如下：

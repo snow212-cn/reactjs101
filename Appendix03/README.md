@@ -229,7 +229,7 @@
 
 1. Shallow Rendering（createRenderer）
 
-	Shallow Rendering 系指将一个 Virtual DOM 渲染成子 Component，但是只渲染第一层，不渲染所有子元件，因此处理速度快且不需要 DOM 环境。Shallow rendering 在单元测试非常有用，由于只测试一个特定的 component，而重要的不是它的 children。这也意味着改变一个 child component 不会影响 parent component 的测试。
+	Shallow Rendering 系指将一个 Virtual DOM 渲染成子 Component，但是只渲染第一层，不渲染所有子组件，因此处理速度快且不需要 DOM 环境。Shallow rendering 在单元测试非常有用，由于只测试一个特定的 component，而重要的不是它的 children。这也意味着改变一个 child component 不会影响 parent component 的测试。
 
 	以下是 `react-addons-test-utils-example/src/test/shallowRender.test.js`：
 
@@ -368,7 +368,7 @@ component.find('h1'); // 使用元素选取
 
 1. Shallow Rendering
 
-	shallow 方法事实上就是官方测试工具的 shallow rendering 封装。同样是只渲染第一层，不渲染所有子元件。
+	shallow 方法事实上就是官方测试工具的 shallow rendering 封装。同样是只渲染第一层，不渲染所有子组件。
 
 	```
 	import React from 'react';
@@ -388,7 +388,7 @@ component.find('h1'); // 使用元素选取
 
 2. Static Rendering
 
-	render 方法是将 React 元件渲染成静态的 HTML 字串，并利用 Cheerio 函式库（这点和 shallow 不同）分析其结构返回物件。虽然底层是不同的处理引擎但使用上 API 封装起来和 Shallow 却是一致的。需要注意的是 Static Rendering 非只渲染一层，需要注意是否需要 mock props 传递。
+	render 方法是将 React 组件渲染成静态的 HTML 字串，并利用 Cheerio 函式库（这点和 shallow 不同）分析其结构返回物件。虽然底层是不同的处理引擎但使用上 API 封装起来和 Shallow 却是一致的。需要注意的是 Static Rendering 非只渲染一层，需要注意是否需要 mock props 传递。
 
 	```javascript
 	import React from 'react';
@@ -408,7 +408,7 @@ component.find('h1'); // 使用元素选取
 
 3. Full Rendering
 
-	mount 方法 React 元件载入真实 DOM 节点。同样因为牵涉到 DOM 也要使用 JSDOM。
+	mount 方法 React 组件载入真实 DOM 节点。同样因为牵涉到 DOM 也要使用 JSDOM。
 
 	```javascript
 	import React from 'react';

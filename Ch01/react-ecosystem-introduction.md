@@ -8,7 +8,7 @@
 ReactJS 是 Facebook 推出的 JavaScript 函式库，若以 MVC 框架来看，React 定位是在 View 的范畴。在 ReactJS 0.14 版之后，ReactJS 更把原先处理 DOM 的部分独立出去（react-dom），让 ReactJS 核心更单纯，也更符合 React 所倡导的 `Learn once, write everywhere` 的理念。事实上，ReactJS 本身的 API 相对单纯，但由于整个生态系非常庞大，因此学习 React 却是一条漫长的道路。此外，当你想把 React 应用在你的应用程式时，你通常必须学习整个 React Stack 才能充分发挥 React 的最大优势。
 
 ## JSX 
-事实上，JSX 并非一种全新的语言，而是一种语法糖（[Syntatic Sugar](https://en.wikipedia.org/wiki/Syntactic_sugar)），一种语法类似 [XML](https://zh.wikipedia.org/wiki/XML) 的 ECMAScript 语法扩充。在 JSX 中 HTML 和组建这些元素标签的程式码有紧密的关系，这和过去我们强调 HTML、JavaScript 分离的观念有很大不同。当然，你可以选择不要在 React 使用 JSX，不过相信我，当你真正开始撰写 React 元件（Component）时，你会很庆幸有 JSX 真好。
+事实上，JSX 并非一种全新的语言，而是一种语法糖（[Syntatic Sugar](https://en.wikipedia.org/wiki/Syntactic_sugar)），一种语法类似 [XML](https://zh.wikipedia.org/wiki/XML) 的 ECMAScript 语法扩充。在 JSX 中 HTML 和组建这些元素标签的程式码有紧密的关系，这和过去我们强调 HTML、JavaScript 分离的观念有很大不同。当然，你可以选择不要在 React 使用 JSX，不过相信我，当你真正开始撰写 React 组件（Component）时，你会很庆幸有 JSX 真好。
 
 ## NPM
 NPM（Node Package Manager）是 Node.js 下的主流套件管理工具。在 NPM 上有非常多的套件，可以让你不用再重造轮子，更可以让你可以轻松用指令管理不同的套件。由于 NPM 主要是基于 [CommonJS](https://en.wikipedia.org/wiki/CommonJS) 的规范，通常必须搭配 Browserify 这样的工具才能在前端使用 NPM 的模组。然而因 NPM 是基于 Nested Dependency Tree，不同的套件有可能会在引入依赖时会引入相同但不同版本的套件，造成档案大小过大的情形。这和另一个套件管理工具 [Bower](https://bower.io/) 专注在前端套件且使用 Flat Dependency Tree（让使用者决定相依的套件版本）是比较不同的地方。
@@ -80,7 +80,7 @@ NPM（Node Package Manager）是 Node.js 下的主流套件管理工具。在 NP
 [ESLint](http://eslint.org/) 是一个提供 JavaScript 和 JSX 的程式码检查工具，可以确保团队的程式码品质。其支援可插拔的特性，可以根据需求在 `.eslintrc` 设定检查规则。目前主流的检查规则会使用 Airbnb 所释出的 [Airbnb React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react)，在使用上需先安装 [eslint-config-airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb) 等套件。
 
 ## React Router
-[React Router](https://github.com/reactjs/react-router) 是 React 中主流使用的 Routing 函式库，透过 URL 的变化来管理对应的状态和元件。若开发不刷页的单页式（single page application）的 React 应用程式通常都会需要用到。
+[React Router](https://github.com/reactjs/react-router) 是 React 中主流使用的 Routing 函式库，透过 URL 的变化来管理对应的状态和组件。若开发不刷页的单页式（single page application）的 React 应用程式通常都会需要用到。
 
 ## Flux/Redux
 [Flux](https://facebook.github.io/flux/) 是一个实现单项流的应用程式资料架构（architecture），同样是由 Facebook 推出，并和 React 专注于 View 的部份形成互补。而由 Dan Abramov 所开发的 [Redux](https://github.com/reactjs/redux) 被 React 开发社群认为是 Flux-like 更优雅的作法，也是目前主流搭配 React 的状态（State）管理工具。让你在开发复杂的应用程式时可以更方便管理你的状态（state）。

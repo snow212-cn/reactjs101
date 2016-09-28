@@ -51,7 +51,7 @@ export default class MyComponent extends React.Component {
 
 
 ## 2. Classes
-在 React 中元件（Component）是组成视觉页面的基础。在 ES5 中我们使用 `React.createClass()` 来建立 Component，而在 ES6+ 则是用 [Classes](https://babeljs.io/docs/learn-es2015/#classes) 继承 `React.Component` 来建立 Component。若是有写过 Java 等物件导向语言（OOP）的读者应该对于这种写法比较不陌生，不过要注意的是 JavaScript 仍是原型继承类型的物件导向程式语言，只是使用 `Classes` 让物件导向使用上更加直观。对于选择 `class` 使用上还有疑惑的读者建议可以阅读 [React.createClass versus extends React.Component](https://toddmotto.com/react-create-class-versus-component/) 这篇文章。
+在 React 中组件（Component）是组成视觉页面的基础。在 ES5 中我们使用 `React.createClass()` 来建立 Component，而在 ES6+ 则是用 [Classes](https://babeljs.io/docs/learn-es2015/#classes) 继承 `React.Component` 来建立 Component。若是有写过 Java 等物件导向语言（OOP）的读者应该对于这种写法比较不陌生，不过要注意的是 JavaScript 仍是原型继承类型的物件导向程式语言，只是使用 `Classes` 让物件导向使用上更加直观。对于选择 `class` 使用上还有疑惑的读者建议可以阅读 [React.createClass versus extends React.Component](https://toddmotto.com/react-create-class-versus-component/) 这篇文章。
 
 ES5 `React.createClass()` 用法：
 
@@ -345,7 +345,7 @@ const name = "Bob", let = "today";
 
 
 ## 8. Destructuring & spread attributes
-在 React 的 Component 中，父元件利用 `props` 来传递资料到子元件是常见作法，然而我们有时会希望只传递部分资料，此时 ES6+ 中的 [Destructuring](https://babeljs.io/docs/learn-es2015/#destructuring) 和 [JSX 的 Spread Attributes
+在 React 的 Component 中，父组件利用 `props` 来传递资料到子组件是常见作法，然而我们有时会希望只传递部分资料，此时 ES6+ 中的 [Destructuring](https://babeljs.io/docs/learn-es2015/#destructuring) 和 [JSX 的 Spread Attributes
 ](https://facebook.github.io/react/docs/jsx-spread.html) ，`...` Spread Attributes 主要是用来迭代物件：
 
 ```js
@@ -399,7 +399,7 @@ var React = require('react-native');
 var View = React.View;
 ```
 
-在 ES6+ 则可以直接使用 `Destructuring` 这种简化方式来引入模组中的元件：
+在 ES6+ 则可以直接使用 `Destructuring` 这种简化方式来引入模组中的组件：
 
 ```
 // 这边等于上面的写法

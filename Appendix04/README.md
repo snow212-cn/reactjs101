@@ -11,7 +11,7 @@ GraphQL 的出现主要是为了要解决 Web/Mobile 端不断增加的 API 请�
 
 根据 [GraphQL 官方网站](http://graphql.org/)的定义，GraphQL 是一个资料查询语言和 runtime。Query responses 是由 client 所宣告决定，而非 server 端，且只会回传 client 所宣告的内容。此外，GraphQL 是强型别（strong type）且可以容易使用阶层（hierarchical）和处理复杂的资料关连性，并更容易让前端工程师和产品工程师定义 Schema 来使用，赋予前端对于资料的制定能力。
 
-GraphQL 主要由以下元件构成：
+GraphQL 主要由以下组件构成：
 
 类别系统（Type System）
 查询语言（Query Language）：在 Operations 中 query 只读取资料而 mutation 写入操作

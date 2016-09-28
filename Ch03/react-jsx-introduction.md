@@ -69,7 +69,7 @@ if(this.state.liked) {
 不使用 JSX（记得我们说过 JSX 是选用的）：
 
 ```js
-// React.createElement(元件/HTML标签, 元件属性，以物件表示, 子元件)
+// React.createElement(组件/HTML标签, 组件属性，以物件表示, 子组件)
 React.createElement('a', {href: 'https://facebook.github.io/react/'}, 'Hello!')
 ```
 
@@ -200,7 +200,7 @@ React.createElement("h1", null, "Hello React!");
 
 var content = (
   <List>
-      {/* 若是在子元件注解要加 {}  */}
+      {/* 若是在子组件注解要加 {}  */}
       <Item
         /* 多行
            注解

@@ -14,7 +14,7 @@
 2. 使用 Native Components，更贴近原生使用者体验
 3. 在 JavaScript 和 Native 之间的操作为非同步（Asynchronous）执行，并可用 Chrome 开发者工具除错，支援 `Hot Reloading`
 4. 使用 [Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes) 进行排版和布局
-5. 良好的可扩展性（Extensibility），容易整合 Web 生态系标准（XMLHttpRequest、 navigator.geolocation 等）或是原生的元件或函式库（Objective-C、Java 或 Swift）  
+5. 良好的可扩展性（Extensibility），容易整合 Web 生态系标准（XMLHttpRequest、 navigator.geolocation 等）或是原生的组件或函式库（Objective-C、Java 或 Swift）  
 6. Facebook 已使用 React Native 于自家 Production App 且将持续维护，另外也有持续蓬勃发展的技术社群
 7. 让 Web 开发者可以使用熟悉的技术切入 Native App 开发
 8. 2015/3 释出 iOS 版本，2015/9 释出 Android 版本
@@ -81,7 +81,7 @@ import {
   View
 } from 'react-native';
 
-// 元件式的开发方式和 React 如出一辙，但要注意的是在 React Native 中我们不使用 HTML 元素而是使用 React Native 元件进行开发，这也符合 Learn once, write anywhere 的原则。
+// 组件式的开发方式和 React 如出一辙，但要注意的是在 React Native 中我们不使用 HTML 元素而是使用 React Native 组件进行开发，这也符合 Learn once, write anywhere 的原则。
 class HelloWorldApp extends Component {
   render() {
     return (
@@ -195,7 +195,7 @@ $ cd ReactNativeFirebaseMotto
   }
   ```
 
-Firebase 在使用上有许多优点，其中一个使用 Back-End As Service 的好处是你可以专注在应用程式的开发便免花过多时间处理后端基础建设的部份，更可以让 Back-End 共用在不同的 client side 中。此外 Firebase 在和 React 整合上也十分容易，你可以想成 Firebase 负责资料的储存，透过 API 和 React 元件互动，Redux 负责接收管理 client state，若是监听到 Firebase 后端资料更新后同步更新 state 并重新 render 页面。
+Firebase 在使用上有许多优点，其中一个使用 Back-End As Service 的好处是你可以专注在应用程式的开发便免花过多时间处理后端基础建设的部份，更可以让 Back-End 共用在不同的 client side 中。此外 Firebase 在和 React 整合上也十分容易，你可以想成 Firebase 负责资料的储存，透过 API 和 React 组件互动，Redux 负责接收管理 client state，若是监听到 Firebase 后端资料更新后同步更新 state 并重新 render 页面。
 
 ### 使用 Flexbox 进行 UI 布局设计 
 在 React Native 中是使用 `Flexbox` 进行排版，若读者对于 Flexbox 尚不熟悉，建议可以[参考这篇文章](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)，若有需要游戏化的学习工具，也非常推荐这两个教学小游戏：[FlexDefense](http://www.flexboxdefense.com/)、[FLEXBOX FROGGY](http://flexboxfroggy.com/)。
@@ -221,7 +221,7 @@ Align Items 负责决定整个 `flex containers` 内的 items 的垂直摆设，
 ## 动手实作
 有了前面的准备，现在我们终于要开始进入核心的应用程式开发了！
 
-首先我们先设定好整个 App 的进入档 `index.android.js`，在这个档案中我们设定了初始化的设定和主要元件 `<Main />`：
+首先我们先设定好整个 App 的进入档 `index.android.js`，在这个档案中我们设定了初始化的设定和主要组件 `<Main />`：
 
 ```javascript
 /**
