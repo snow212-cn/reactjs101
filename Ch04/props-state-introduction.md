@@ -30,11 +30,13 @@ app.js，使用 ES6 Class Component 写法：
 
 ```javascript
 class HelloMessage extends React.Component {
+	// 若是需要绑定 this.方法或是需要在 constructor 使用 props，定义 state，就需要 constructor。若是在其他方法（如 render）使用 this.props 则不用一定要定义 constructor
 	constructor(props) {
 		// 对于 OOP 物件导向程式设计熟悉的读者应该对于 constructor 建构子的使用不陌生，事实上它是 ES6 的语法糖，骨子里还是 portotype based 物件导向程式语言。透过 extends 可以继承 React.Component 父类别。super 方法可以呼叫继承父类别的建构子
 		super(props);
 		this.state = {}
 	}
+	// render 是唯一必须的方法，但如果是单纯 render UI 建议使用 Functional Component 写法，效能较佳且较简洁
 	render() {
 		return (
 			<div>Hello {this.props.name}</div>
@@ -54,6 +56,8 @@ HelloMessage.defaultProps = {
 
 ReactDOM.render(<HelloMessage name="Mark" />, document.getElementById('app'));
 ```
+
+关于 React ES6 class constructor super() 解释可以参考 [React ES6 class constructor super()](http://cheng.logdown.com/posts/2016/03/26/683329) 。
 
 使用 Functional Component 写法：
 
@@ -137,6 +141,8 @@ class Timer extends React.Component {
 
 ReactDOM.render(<Timer />, document.getElementById('app'));
 ```
+
+关于 Javascript this 用法可以参考 [Javascript：this用法整理](https://software.intel.com/zh-cn/blogs/2013/10/09/javascript-this)。
 
 ## 事件处理（Event Handle）
 在前面的内容我们已经学会如何使用 props 和 state，接下来我们要更进一步学习在 React 内如何进行事件处理。下列将使用 React 官网的 An Application 当做例子，实作出一个简单的 TodoApp。
@@ -283,6 +289,7 @@ ReactDOM.render(<MarkdownEditor />, document.getElementById('app'));
 ## 延伸阅读
 1. [React 官方网站](https://facebook.github.io/react/index.html)
 2. [Top-Level API](https://facebook.github.io/react/docs/top-level-api.html)
+3. [Javascript：this用法整理](https://software.intel.com/zh-cn/blogs/2013/10/09/javascript-this)
 
 ## :door: 任意门
 | [回首页](../../../tree/zh-CN/) | [上一章：JSX 简明入门教学指南](../Ch03/react-jsx-introduction.md) | [下一章：React Component 规格与生命周期（Life Cycle）](../Ch04/react-component-life-cycle.md) |
