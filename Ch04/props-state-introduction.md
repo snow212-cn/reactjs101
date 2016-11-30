@@ -32,7 +32,7 @@ app.js，使用 ES6 Class Component 写法：
 class HelloMessage extends React.Component {
 	// 若是需要绑定 this.方法或是需要在 constructor 使用 props，定义 state，就需要 constructor。若是在其他方法（如 render）使用 this.props 则不用一定要定义 constructor
 	constructor(props) {
-		// 对于 OOP 物件导向程式设计熟悉的读者应该对于 constructor 建构子的使用不陌生，事实上它是 ES6 的语法糖，骨子里还是 portotype based 物件导向程式语言。透过 extends 可以继承 React.Component 父类别。super 方法可以呼叫继承父类别的建构子
+		// 对于 OOP 物件导向程式设计熟悉的读者应该对于 constructor 建构子的使用不陌生，事实上它是 ES6 的语法糖，骨子里还是 prototype based 物件导向程式语言。透过 extends 可以继承 React.Component 父类别。super 方法可以呼叫继承父类别的建构子
 		super(props);
 		this.state = {}
 	}
@@ -51,7 +51,7 @@ HelloMessage.propTypes = {
 
 // Prop 预设值，若对应 props 没传入值将会使用 default 值 Zuck
 HelloMessage.defaultProps = {
- name: 'Zuck', 
+ name: 'Zuck',
 }
 
 ReactDOM.render(<HelloMessage name="Mark" />, document.getElementById('app'));
@@ -62,7 +62,7 @@ ReactDOM.render(<HelloMessage name="Mark" />, document.getElementById('app'));
 使用 Functional Component 写法：
 
 ```javascript
-// Functional Component 可以视为 f(d) => UI，根据传进去的 props 绘出对应的 UI。注意这边 props 是传入函式的参数。因此取用 props 不用加 this
+// Functional Component 可以视为 f(d) => UI，根据传进去的 props 绘出对应的 UI。注意这边 props 是传入函式的参数，因此取用 props 不用加 this
 const HelloMessage = (props) => (
 	<div>Hello {props.name}</div>
 );
@@ -74,7 +74,7 @@ HelloMessage.propTypes = {
 
 // Prop 预设值，若对应 props 没传入值将会使用 default 值 Zuck。用法等于 ES5 的 getDefaultProps
 HelloMessage.defaultProps = {
- name: 'Zuck', 
+ name: 'Zuck',
 }
 
 ReactDOM.render(<HelloMessage name="Mark" />, document.getElementById('app'));
@@ -112,7 +112,7 @@ app.js：
 class Timer extends React.Component {
 	constructor(props) {
 		super(props);
-		// 与 ES5 React.createClass({}) 不同的是 component 内自定义的方法需要自行绑定 this context，或是使用 arrow function 
+		// 与 ES5 React.createClass({}) 不同的是 component 内自定义的方法需要自行绑定 this context，或是使用 arrow function
         this.tick = this.tick.bind(this);
 		// 初始 state，等于 ES5 中的 getInitialState
 		this.state = {
@@ -127,7 +127,7 @@ class Timer extends React.Component {
 	componentDidMount() {
 	    this.interval = setInterval(this.tick, 1000);
 	}
-	// componentWillUnmount 为 component 生命周期中 component 即将移出插入的节点的阶段。这边移除了 setInterval 效力 
+	// componentWillUnmount 为 component 生命周期中 component 即将移出插入的节点的阶段。这边移除了 setInterval 效力
 	componentWillUnmount() {
 		clearInterval(this.interval);
 	}
@@ -135,7 +135,7 @@ class Timer extends React.Component {
 	render() {
 	    return (
 	      <div>Seconds Elapsed: {this.state.secondsElapsed}</div>
-	    );		
+	    );
 	}
 }
 
@@ -192,25 +192,25 @@ class TodoApp extends React.Component {
 		}
 	}
 	onChange(e) {
-    this.setState({text: e.target.value});		
+    	this.setState({text: e.target.value});
 	}
 	handleSubmit(e) {
-    e.preventDefault();
-    const nextItems = this.state.items.concat([{text: this.state.text, id: Date.now()}]);
-    const nextText = '';
-    this.setState({items: nextItems, text: nextText});
+    	e.preventDefault();
+    	const nextItems = this.state.items.concat([{text: this.state.text, id: Date.now()}]);
+    	const nextText = '';
+    	this.setState({items: nextItems, text: nextText});
 	}
 	render() {
-    return (
-      <div>
-        <h3>TODO</h3>
-        <TodoList items={this.state.items} />
-        <form onSubmit={this.handleSubmit}>
-          <input onChange={this.onChange} value={this.state.text} />
-          <button>{'Add #' + (this.state.items.length + 1)}</button>
-        </form>
-      </div>
-    );
+	    return (
+	      <div>
+	        <h3>TODO</h3>
+	        <TodoList items={this.state.items} />
+	        <form onSubmit={this.handleSubmit}>
+	          <input onChange={this.onChange} value={this.state.text} />
+	          <button>{'Add #' + (this.state.items.length + 1)}</button>
+	        </form>
+	      </div>
+	    );
 	}
 }
 
@@ -222,7 +222,7 @@ ReactDOM.render(<TodoApp />, document.getElementById('app'));
 ## Refs 与表单处理
 上面介绍了 props（传入后就不能修改）、state（随着使用者互动而改变）和事件处理机制后，我们将接续介绍如何在 React 中进行表单处理。同样我们使用 React 官网范例 A Component Using External Plugins 进行介绍。由于 React 可以容易整合外部的 libraries（例如：jQuery），本范例将使用 `remarkable` 结合 `ref` 属性取出 DOM Value 值（另外比较常用的作法是使用 `onChange` 事件处理方式处理表单内容），让使用者可以使用 Markdown 语法的所见即所得编辑器（editor）。
 
-HTML Markup（记得除了引入 `react` 和 `react-dom` 外还要用 `CDN` 方式引入 `remarkable` 这个 `Markdown` 语法 parser 套件）：
+HTML Markup（除了引入 `react` 、 `react-dom` 还要用 `CDN` 方式引入 `remarkable` 这个 `Markdown` 语法 parser 套件，记得如果没有使用 Webpack 或是 browserify + babelify 等工具需要引入 `babel-standalone` 浏览器解析 ES6 语法并于引入 script 加上 type="text/babel"）：
 
 ```html
 <!DOCTYPE html>
@@ -235,9 +235,10 @@ HTML Markup（记得除了引入 `react` 和 `react-dom` 外还要用 `CDN` 方�
 <body>
 <script src="https://fb.me/react-15.1.0.js"></script>
 <script src="https://fb.me/react-dom-15.1.0.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.18.1/babel.min.js"></script>
 <script src="https://cdn.jsdelivr.net/remarkable/1.6.2/remarkable.min.js"></script>
   <div id="app"></div>
-	<script src="./app.js"></script>
+	<script type="text/babel" src="./app.js"></script>
 </body>
 </html>
 ```
@@ -255,28 +256,28 @@ class MarkdownEditor extends React.Component {
 		}
 	}
 	handleChange() {
-    this.setState({value: this.refs.textarea.value});
-	}
-	// 将使用者输入的 Markdown 语法 parse 成 HTML 放入 DOM 中，React 通常使用 virtual DOM 作为和 DOM 沟通的中介，不建议直接由操作 DOM。故使用时的属性为 dangerouslySetInnerHTML
-	rawMarkup() {
-    const md = new Remarkable();
-    return { __html: md.render(this.state.value) };		
+	    this.setState({value: this.refs.textarea.value});
+		}
+		// 将使用者输入的 Markdown 语法 parse 成 HTML 放入 DOM 中，React 通常使用 virtual DOM 作为和 DOM 沟通的中介，不建议直接操作 DOM。故使用时的属性为 dangerouslySetInnerHTML
+		rawMarkup() {
+	    const md = new Remarkable();
+	    return { __html: md.render(this.state.value) };
 	}
 	render() {
-    return (
-      <div className="MarkdownEditor">
-        <h3>Input</h3>
-        <textarea
-          onChange={this.handleChange}
-          ref="textarea"
-          defaultValue={this.state.value} />
-        <h3>Output</h3>
-        <div
-          className="content"
-          dangerouslySetInnerHTML={this.rawMarkup()}
-        />
-      </div>
-    );	
+	    return (
+	      <div className="MarkdownEditor">
+	        <h3>Input</h3>
+	        <textarea
+	          onChange={this.handleChange}
+	          ref="textarea"
+	          defaultValue={this.state.value} />
+	        <h3>Output</h3>
+	        <div
+	          className="content"
+	          dangerouslySetInnerHTML={this.rawMarkup()}
+	        />
+	      </div>
+	    );
 	}
 }
 

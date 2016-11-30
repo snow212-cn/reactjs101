@@ -22,7 +22,7 @@
 以下是 React [官方首页的范例](https://facebook.github.io/react/index.html)，以下使用 `React v15.2.1`：
 
 1. 理解 `React` 是 `Component` 导向的应用程式设计
-2. 引入 `react.js`、`react-dom.js`（react 0.14 后将 react-dom 从 react 核心分离，更符合 react 跨平台抽象化的定位）以及 `babel-core-browser` 版 script（可以想成 `babel` 是翻译机，翻译浏览器看不懂的 `JSX` 或 `ES6+` 语法成为浏览器看的懂得的 `JavaScript`。为了提升效率，通常我们都会在伺服器端做转译，这点在 production 环境尤为重要）
+2. 引入 `react.js`、`react-dom.js`（react 0.14 后将 react-dom 从 react 核心分离，更符合 react 跨平台抽象化的定位）以及 `babel-standalone` 版 script（可以想成 `babel` 是翻译机，翻译浏览器看不懂的 `JSX` 或 `ES6+` 语法成为浏览器看的懂得的 `JavaScript`。为了提升效率，通常我们都会在伺服器端做转译，这点在 production 环境尤为重要）
 3. 在 `<body>` 撰写 React Component 要插入（mount）指定节点的地方：`<div id="example"></div>`
 4. 透过 `babel` 进行语言翻译 `React JSX` 语法，`babel` 会将其转为浏览器看的懂得 `JavaScript`。其代表意义是：`ReactDOM.render(欲 render 的 Component 或 HTML 元素, 欲插入的位置)`。所以我们可以在浏览器上打开我们的 `hello.html`，就可以看到 `Hello, world!` 。That's it，我们第一个 `React` 应用程式就算完成了！
 
@@ -35,7 +35,7 @@
     <!-- 以下引入 react.js, react-dom.js（react 0.14 后将 react-dom 从 react 核心分离，更符合 react 跨平台抽象化的定位）以及 babel-core browser 版 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.2.1/react-dom.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.18.1/babel.min.js"></script>
   </head>
   <body>
     <!-- 这边的 id="example" 的 <div> 为 React Component 要插入的地方 -->

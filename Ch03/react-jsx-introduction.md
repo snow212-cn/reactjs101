@@ -3,7 +3,7 @@
 ![JSX 简明入门教学指南](./images/reactjs.png)
 
 ## 前言
-根据 [React](https://facebook.github.io/react/) 官方定义，React 是一个构建使用者介面的 JavaScritp Library。以 MVC 模式来说，ReactJS 主要是负责 View 的部份。过去一段时间，我们被灌输了许多前端分离的观念，在前端三兄弟中（或三姊妹、三剑客）：HTML 掌管内容结构、CSS 负责外观样式，JavaScript 主管逻辑互动，千万不要混在一块。然而，在 React 世界里，所有事物都是 以 Component 为基础，将同一个 Component 相关的程式和资源都放在一起，而在撰写 React Component 时我们通常会使用 [JSX](https://facebook.github.io/jsx/) 的方式来提升程式撰写效率。事实上，JSX 并非一种全新的语言，而是一种语法糖（[Syntatic Sugar](https://en.wikipedia.org/wiki/Syntactic_sugar)），一种语法类似 [XML](https://zh.wikipedia.org/wiki/XML) 的 ECMAScript 语法扩充。在 JSX 中 HTML 和组建这些元素标签的程式码有紧密的关系。因此你可能要熟悉一下以 Component 为单位的思考方式（本文主要使用 ES6 语法）。
+根据 [React](https://facebook.github.io/react/) 官方定义，React 是一个构建使用者介面的 JavaScritp Library。以 MVC 模式来说，ReactJS 主要是负责 View 的部份。过去一段时间，我们被灌输了许多前端分离的观念，在前端三兄弟中（或三姊妹、三剑客）：HTML 掌管内容结构、CSS 负责外观样式，JavaScript 主管逻辑互动，千万不要混在一块。然而，在 React 世界里，所有事物都是 以 Component 为基础，将同一个 Compoent 相关的程式和资源都放在一起，而在撰写 React Component 时我们通常会使用 [JSX](https://facebook.github.io/jsx/) 的方式来提升程式撰写效率。事实上，JSX 并非一种全新的语言，而是一种语法糖（[Syntatic Sugar](https://en.wikipedia.org/wiki/Syntactic_sugar)），一种语法类似 [XML](https://zh.wikipedia.org/wiki/XML) 的 ECMAScript 语法扩充。在 JSX 中 HTML 和组建这些元素标签的程式码有紧密的关系。因此你可能要熟悉一下以 Component 为单位的思考方式（本文主要使用 ES6 语法）。
 
 此外，React 和 JSX 的思维在于善用 JavaScript 的强大能力，放弃蹩脚的模版语言，这和 [Angular](https://angularjs.org/) 强化 HTML 的理念也有所不同。当然 JSX 并非强制使用，你也可以选择不用，因为最终 JSX 的内容会转化成 JavaScript（浏览器只看的懂 JavaScript）。不过等你阅读完接下来的内容，你或许会开始发现 JSX 的好，认真考虑使用 JSX 的语法。
 
@@ -80,7 +80,7 @@ JSX 并非一种全新的语言，而是一种语法糖（Syntatic Sugar），�
 // const 为常数
 const lists = ['JavaScript', 'Java', 'Node', 'Python'];
 
-class HelloMessage extends React.Component {
+class HelloMessage extends React.Compoent {
   render() {
     return (
     <ul>
@@ -147,7 +147,7 @@ class HelloMessage extends React.Component {
 JSX 标签非常类似 XML ，可以直接书写。一般 Component 命名首字大写，HTML Tags 小写。以下是一个建立 Component 的 class：
 
 ```js
-class HelloMessage extends React.Component {
+class HelloMessage extends React.Compoent {
   render() {
     return (
       <div>
@@ -215,7 +215,7 @@ var content = (
 在 HTML 中，我们可以透过标签上的属性来改变标签外观样式，在 JSX 中也可以，但要注意 `class` 和 `for` 由于为 JavaScript 保留关键字用法，因此在 JSX 中使用 `className` 和 `htmlFor` 替代。
 
 ```js
-class HelloMessage extends React.Component {
+class HelloMessage extends React.Compoent {
   render() {
     return (
       <div className="message">
@@ -287,7 +287,7 @@ React.createElement("h1", React._spread({}, props, {value: "yo"}), "Hello React!
 ```
 
 ## 总结
-以上就是 JSX 简明入门教学，希望透过以上介绍，让读者了解在 React 中为何要使用 JSX，以及 JSX 基本概念和用法。最后为大家复习一下：在 React 世界里，所有事物都是以 Component 为基础，通常会将同一个 Component 相关的程式和资源都放在一起，而在撰写 React Component 时我们常会使用 [JSX](https://facebook.github.io/jsx/) 的方式来提升程式撰写效率。JSX 是一种语法类似 XML 的 ECMAScript 语法扩充，可以善用 JavaScript 的强大能力，放弃蹩脚的模版语言。当然 JSX 并非强制使用，你也可以选择不用，因为最终 JSX 的内容会转化成 JavaScript。当相信阅读完上述的内容后，你会开始认真考虑使用 JSX 的语法。
+以上就是 JSX 简明入门教学，希望透过以上介绍，让读者了解在 React 中为何要使用 JSX，以及 JSX 基本概念和用法。最后为大家复习一下：在 React 世界里，所有事物都是以 Component 为基础，通常会将同一个 Compoent 相关的程式和资源都放在一起，而在撰写 React Component 时我们常会使用 [JSX](https://facebook.github.io/jsx/) 的方式来提升程式撰写效率。JSX 是一种语法类似 XML 的 ECMAScript 语法扩充，可以善用 JavaScript 的强大能力，放弃蹩脚的模版语言。当然 JSX 并非强制使用，你也可以选择不用，因为最终 JSX 的内容会转化成 JavaScript。当相信阅读完上述的内容后，你会开始认真考虑使用 JSX 的语法。
 
 ## 延伸阅读
 1. [Imperative programming or declarative programming](http://www.puritys.me/docs-blog/article-320-Imperative-programming-or-declarative-programming.html)

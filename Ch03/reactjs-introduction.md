@@ -87,7 +87,7 @@ React 在设计上的思路认为使用 Component 比起模版（Template）和�
 ```javascript
 // <MailForm /> 内部长相
 <form>
-	<input type="text" name="email">
+	<input type="text" name="email" />
 	<button type="submit"></button>
 </form>
 ```

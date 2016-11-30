@@ -26,7 +26,7 @@
 
 	// Prop 预设值，若对应 props 没传入值将会使用 default 值，为每个实例化 Component 共用的值
 	MyComponent.defaultProps = {
-	 	name: '', 
+	 	name: '',
 	}
 
 	// 将 <MyComponent /> 组件插入 id 为 app 的 DOM 元素中
@@ -48,9 +48,9 @@
 
 	// Prop 预设值，若对应 props 没传入值将会使用 default 值
 	MyComponent.defaultProps = {
-		name: '', 
+		name: '',
 	}
-	
+
 	// 将 <MyComponent /> 组件插入 id 为 app 的 DOM 元素中
 	ReactDOM.render(<MyComponent name="Mark"/>, document.getElmentById('app'));
 	```

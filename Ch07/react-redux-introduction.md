@@ -91,7 +91,7 @@ store.dispatch({ type: 'DECREMENT' });
 
 1. createStore：`createStore(reducer, [preloadedState], [enhancer])`
 
-	我们知道在 Redux 中只会有一个 store。在产生 store 时我们会使用 `createStore` 这个 API 来创建 store。第一个参数放入我们的 `reducer` 或是有多个 `reducers` combine（使用 `combineReducers`）在一起的 `rootReducers`。第二个参数我们会放入希望预先载入的 `state` 例如：user session 等。第三个参数通常会放入我们想要使用用来增强 Redux 功能的 `middlewares`，若有多个 `middlewares` 的话，通常会使用 `applyMiddleware` 来整合。
+	我们知道在 Redux 中只会有一个 store。在产生 store 时我们会使用 `createStore` 这个 API 来创建 store。第一个参数放入我们的 `reducer` 或是有多个 `reducers` combine（使用 `combineReducers`）在一起的 `rootRuducers`。第二个参数我们会放入希望预先载入的 `state` 例如：user session 等。第三个参数通常会放入我们想要使用用来增强 Redux 功能的 `middlewares`，若有多个 `middlewares` 的话，通常会使用 `applyMiddleware` 来整合。
 
 2. Store
 
@@ -102,7 +102,7 @@ store.dispatch({ type: 'DECREMENT' });
 	- subscribe(listener)
 	- replaceReducer(nextReducer)
 
-	关于 Store 重点是要知道 Redux 只有一个 Store 负责存放整个 App 的 State，而唯一能改变 State 的方法只有发送 action。
+	关于 Store 重点是要知道 Redux 只有一个 Sotre 负责存放整个 App 的 State，而唯一能改变 State 的方法只有发送 action。
 
 3. combineReducers：`combineReducers(reducers)`
 

@@ -14,6 +14,8 @@
 ## 翻译版本（Translate）
 
 1. [简体中文版本 by @carlleton](https://github.com/carlleton/reactjs101/tree/zh-CN)
+2. [前端圈简体中文版本 by @blueflylin]( https://github.com/blueflylin/reactjs101) [特别感谢前端圈小伙伴！](http://fequan.com/)
+
 
 若需翻译成其他语言版本，请先 `fork` 一份 `repo` 到自己的 Guthub 并另外开新的 `branch`。最后将翻译版本连结更新在 `master` 分支中 `README.md` 的 `相关连结（Links）` 后发送 `Pull Request`，谢谢您。
 
