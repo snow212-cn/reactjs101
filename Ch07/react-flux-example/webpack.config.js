@@ -20,16 +20,13 @@ module.exports = {
         test: /\.jsx$|\.js$/,
         loader: 'eslint-loader',
         include: `${__dirname}/src`,
-        exclude: /bundle\.js$/
-      }
+        exclude: /bundle\.js$/,
+      },
     ],
     loaders: [{
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel-loader',
-      query: {
-        presets: ['es2015', 'react'],
-      },
     }],
   },
   devServer: {

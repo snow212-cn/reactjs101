@@ -203,7 +203,7 @@ ImmutableJS 提供了 7 种不可修改的资料类型：`List`、`Map`、`Stack
 传统 JavaScript 比较方式，若资料型态为 Primitive 就不会有问题：
 
 ```javascript
-// 在 shouldComponentUpdate 比较接下来的 props 一否一致，若相同则不重新渲染，提升效能
+// 在 shouldComponentUpdate 比较接下来的 props 是否一致，若相同则不重新渲染，提升效能
 shouldComponentUpdate (nextProps) {
     return this.props.value !== nextProps.value;
 }
@@ -213,7 +213,7 @@ shouldComponentUpdate (nextProps) {
 
 ```javascript
 // 假设 this.props.value 为 { foo: 'app' }
-// 架设 nextProps.value 为 { foo: 'app' },
+// 假设 nextProps.value 为 { foo: 'app' },
 // 虽然两者值是一样，但由于 reference 位置不同，所以视为不同。但由于值一样应该要避免重复渲染
 this.props.value !== nextProps.value; // true
 ```

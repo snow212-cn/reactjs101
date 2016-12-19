@@ -257,9 +257,9 @@ class MarkdownEditor extends React.Component {
 	}
 	handleChange() {
 	    this.setState({value: this.refs.textarea.value});
-		}
-		// 将使用者输入的 Markdown 语法 parse 成 HTML 放入 DOM 中，React 通常使用 virtual DOM 作为和 DOM 沟通的中介，不建议直接操作 DOM。故使用时的属性为 dangerouslySetInnerHTML
-		rawMarkup() {
+	}
+	// 将使用者输入的 Markdown 语法 parse 成 HTML 放入 DOM 中，React 通常使用 virtual DOM 作为和 DOM 沟通的中介，不建议直接由操作 DOM。故使用时的属性为 dangerouslySetInnerHTML
+	rawMarkup() {
 	    const md = new Remarkable();
 	    return { __html: md.render(this.state.value) };
 	}
