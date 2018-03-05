@@ -77,7 +77,7 @@ React Component，就像人会有生老病死一样有生命周期。一般而�
 3. Unmounting
 	- componentWillUnmount()
 
-很多读者一开始学习 Component 生命周期时会觉得很抽象，所以接下来用一个简单范例让大家感受一下 Component 的生命周期。读者可以发现当一开始载入组件时第一个会触发 `console.log('constructor');`，依序执行 `componentWillMount`、`componentDidMount` ，而当点击文字触发 `handleClick()` 更新 `state` 时则会依序执行 `componentWillUpdate`、`componentDidUpdate`：  
+很多读者一开始学习 Component 生命周期时会觉得很抽象，所以接下来用一个简单范例让大家感受一下 Component 的生命周期。读者可以发现当一开始载入组件时第一个会触发 `console.log('constructor');`，依序执行 `componentWillMount`、`componentDidMount` ，而当点击文字触发 `handleClick()` 更新 `state` 时则会依序执行 `componentWillUpdate`、`componentDidUpdate`：
 
 HTML Markup：
 ```html

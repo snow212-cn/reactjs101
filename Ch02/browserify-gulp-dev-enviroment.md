@@ -15,7 +15,7 @@
 - `Babelify` 是一个使用 Browserify 进行 Babel 转换的外挂，你可以想成是一个翻译机，可以将 React 中的 `JSX` 或 `ES6` 语法转成浏览器相容的 `ES5` 语法
 
 初步了解了三种工具的概念后，接下来我们就开始我们的环境设置：
-1. 若是电脑中尚未安装 [Node](https://zh.wikipedia.org/zh-tw/Node.js)（Node.js 是一个开放原始码、跨平台的、可用于伺服器端和网路应用的 Google V8 引擎执行执行环境）和 NPM（Node 套件管理器 Node Package Manager。是一个以 JavaScript 编写的软体套件管理系统，预设环境为 Node.js，从 Node.js 0.6.3 版本开始，npm 被自动附带在安装包中）的话，请先 [上官网安装](https://nodejs.org/en/)
+1. 若是电脑中尚未安装 [Node](https://zh.wikipedia.org/zh-tw/Node.js)（Node.js 是一个开放原始码、跨平台的、可用于伺服器端和网路应用的 Google V8 引擎执行执行环境）和 NPM（Node 套件管理器 Node Package Manager。是一个以 JavaScript 编写的软件套件管理系统，预设环境为 Node.js，从 Node.js 0.6.3 版本开始，npm 被自动附带在安装包中）的话，请先 [上官网安装](https://nodejs.org/en/)
 
 2. 用 `npm` 安装 `browserify`
 

@@ -3,7 +3,7 @@
 ![React 测试入门教学](./images/mocha.png)
 
 ## 前言
-测试是软体开发中非常重要的一个环节，本章我们将带领大家从撰写最简单的测试程式码到整合 `Mocha` + `Chai` 官方提供的[测试工具](https://facebook.github.io/react/docs/test-utils.html)和 Airbnb 所设计的 [Enzyme](https://github.com/airbnb/enzyme) 进行 React 测试。
+测试是软件开发中非常重要的一个环节，本章我们将带领大家从撰写最简单的测试程式码到整合 `Mocha` + `Chai` 官方提供的[测试工具](https://facebook.github.io/react/docs/test-utils.html)和 Airbnb 所设计的 [Enzyme](https://github.com/airbnb/enzyme) 进行 React 测试。
 
 ## Mocha 测试初体验
 [Mocha](https://mochajs.org/) 是目前颇为流行的 JavaScript 测试框架之一，其可以很方便使用于浏览器端和 Node 环境。
@@ -32,7 +32,7 @@
 
 	```
 	$ npm install --save-dev babel-core babel-loader babel-eslint babel-preset-react babel-preset-es2015 eslint eslint-config-airbnb eslint-loader eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react webpack webpack-dev-server html-webpack-plugin chai mocha
-  ```
+	```
 
 2. 测试程式码
 	1. describe（test suite）：表示一组相关的测试。`describe` 为一个函数，第一个参数为 `test suite`的名称，第二个参数为实际执行的函数。

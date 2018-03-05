@@ -3,7 +3,7 @@
 ![用 React Native + Firebase 开发跨平台行动应用程式](./images/react-native-logo.png)
 
 ## 前言
-跨平台（`Wirte once, Run Everywhere`）一直以来是软体工程的圣杯。过去一段时间市场上有许多尝试跨平台开发原生行动装置（Native Mobile App）的解决方案，尝试运用 HTML、CSS　和 JavaScript 等网页前端技术达到跨平台的效果，例如：运用 [jQuery Mobile](https://jquerymobile.com/)、[Ionic](http://ionicframework.com/) 和 [Framework7](http://framework7.io/) 等 Mobile UI 框架（Framework）结合 JavaScript 框架并搭配 [Cordova/PhoneGap](https://en.wikipedia.org/wiki/Apache_Cordova) 进行跨平台行动装置开发。然而，因为这些解决方案通常都是运行在 `WebView` 之上，导致效能和体验要真正趋近于原生应用程式（Native App）还有一段路要走。
+跨平台（`Wirte once, Run Everywhere`）一直以来是软件工程的圣杯。过去一段时间市场上有许多尝试跨平台开发原生行动装置（Native Mobile App）的解决方案，尝试运用 HTML、CSS　和 JavaScript 等网页前端技术达到跨平台的效果，例如：运用 [jQuery Mobile](https://jquerymobile.com/)、[Ionic](http://ionicframework.com/) 和 [Framework7](http://framework7.io/) 等 Mobile UI 框架（Framework）结合 JavaScript 框架并搭配 [Cordova/PhoneGap](https://en.wikipedia.org/wiki/Apache_Cordova) 进行跨平台行动装置开发。然而，因为这些解决方案通常都是运行在 `WebView` 之上，导致效能和体验要真正趋近于原生应用程式（Native App）还有一段路要走。
 
 不过，随着 Facebook 工程团队开发的 [React Native](https://facebook.github.io/react-native/) 横空出世，想尝试跨平台解决方案的开发者又有了新的选择。
 

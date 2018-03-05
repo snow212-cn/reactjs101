@@ -8,7 +8,7 @@
 ![Web 前端工程入门简介](./images/html-css-js.png "Web 前端工程入门简介")
 
 ## 前端工程范畴
-事实上，在目前的业界，前端工程的定位光谱非常广泛，有聚焦在网页设计（Web Design），也有专注在软体工程（Software Engineering）的部份，本书则是将前端工程定位在软体工程的范畴。而 HTML、CSS 和 JavaScript 是前端工程最重要的技术基础。过去一段时间，我们所认为的前端工程主要专注在浏览器平台，但现在的 Web 平台已经不再侷限于桌面浏览器，而是必须面对更多的跨平台、跨浏览器的应用开发场景，其中包含：
+事实上，在目前的业界，前端工程的定位光谱非常广泛，有聚焦在网页设计（Web Design），也有专注在软件工程（Software Engineering）的部份，本书则是将前端工程定位在软件工程的范畴。而 HTML、CSS 和 JavaScript 是前端工程最重要的技术基础。过去一段时间，我们所认为的前端工程主要专注在浏览器平台，但现在的 Web 平台已经不再侷限于桌面浏览器，而是必须面对更多的跨平台、跨浏览器的应用开发场景，其中包含：
 
 1. 网页浏览器（Web Browser），一般的网页应用程式开发
 2. 透过 CLI 指令去操作的 Headless 浏览器（Headless　Application）。例如：[phantomJS](http://phantomjs.org/)、[CasperJS](http://casperjs.org/) 等
@@ -25,3 +25,4 @@
 | [回首页](../../../tree/zh-CN/) | [下一章：React 生态系（Ecosystem）入门简介](../Ch01/react-ecosystem-introduction.md) |
 
 | [勘误、提问或许愿](https://github.com/kdchang/reactjs101/issues) |
+

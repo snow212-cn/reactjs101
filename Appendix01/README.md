@@ -365,7 +365,7 @@ class Todo extends React.Component {
 }
 ```
 
-但使用上要注意的是若是有重复的属性值则以后来覆蓋，下面的例子中若 `...this.props`，有 `className`，则被后来的 `main` 所覆蓋：
+但使用上要注意的是若是有重复的属性值则以后来覆盖，下面的例子中若 `...this.props`，有 `className`，则被后来的 `main` 所覆盖：
 
 ```js
 <div {...this.props} className="main">
