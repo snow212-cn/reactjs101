@@ -32,7 +32,7 @@
 
 	```
 	$ npm install --save-dev babel-core babel-loader babel-eslint babel-preset-react babel-preset-es2015 eslint eslint-config-airbnb eslint-loader eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react webpack webpack-dev-server html-webpack-plugin chai mocha
-```
+  ```
 
 2. 测试程式码
 	1. describe（test suite）：表示一组相关的测试。`describe` 为一个函数，第一个参数为 `test suite`的名称，第二个参数为实际执行的函数。
