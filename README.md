@@ -21,20 +21,20 @@
 
 ## 目录（Table of Contents）
 
--  [一、前端工程和 React 生态系（Ecosystem）简介](zh-CN/Ch01/README.md)
--  [二、开发环境设置与 Webpack 入门](zh-CN/Ch02/README.md)
--  [三、React/JSX/Component 简介](zh-CN/Ch03/README.md)
--  [四、Props/State 基础与 Component 生命周期](zh-CN/Ch04README.md)
--  [五、React Router](zh-CN/Ch05README.md)
--  [六、ImmutableJS](zh-CN/Ch06/README.md)
--  [七、Flux/Redux](zh-CN/Ch07/README.md)
--  [八、Container 与 Presentational Components](zh-CN/Ch08/README.md)
--  [九、实战教学：用 React + Router + Redux + ImmutableJS 写一个 Github 查询应用](tree/zh-CN/Ch09/README.md)
--  [十、实战教学：用 React + Redux + Node（Isomorphic JavaScript）开发食谱分享网站](tree/zh-CN/Ch10/README.md)
--  [附录一、React ES5、ES6+ 常见用法对照表](zh-CN/Appendix01/README.md)
--  [附录二、用 React Native + Firebase 开发跨平台行动应用程式（Native Mobile App）](zh-CN/Appendix02/README.md)
--  [附录三、React 测试入门教学](zh-CN/Appendix03/README.md)
--  [附录四、GraphQL/Relay 初体验](zh-CN/Appendix04/README.md)
+-  [一、前端工程和 React 生态系（Ecosystem）简介](Ch01/README.md)
+-  [二、开发环境设置与 Webpack 入门](Ch02/README.md)
+-  [三、React/JSX/Component 简介](Ch03/README.md)
+-  [四、Props/State 基础与 Component 生命周期](Ch04README.md)
+-  [五、React Router](Ch05README.md)
+-  [六、ImmutableJS](Ch06/README.md)
+-  [七、Flux/Redux](Ch07/README.md)
+-  [八、Container 与 Presentational Components](Ch08/README.md)
+-  [九、实战教学：用 React + Router + Redux + ImmutableJS 写一个 Github 查询应用](Ch09/README.md)
+-  [十、实战教学：用 React + Redux + Node（Isomorphic JavaScript）开发食谱分享网站](Ch10/README.md)
+-  [附录一、React ES5、ES6+ 常见用法对照表](Appendix01/README.md)
+-  [附录二、用 React Native + Firebase 开发跨平台行动应用程式（Native Mobile App）](Appendix02/README.md)
+-  [附录三、React 测试入门教学](Appendix03/README.md)
+-  [附录四、GraphQL/Relay 初体验](Appendix04/README.md)
 
 ## 先备知识（Prior Knowledge）
 本书针对已具备基本 HTML、CSS 和 JavaScript 和 DOM 操作知识的读者设计，但若读者对上述的技术仍不熟悉的话，建议可以先行参考：[MDN](https://developer.mozilla.org/zh-TW/)、[Codecademy](https://www.codecademy.com/)、[W3C School](http://www.w3schools.com/)、[JavaScript核心](http://weizhifeng.net/javascript-the-core.html) 或是参考笔者 [之前的教学讲义](http://kdchang.cc/web-programming-course/) 进行学习。另外，本书全书范例都将以 ES6+ 撰写，若需参考 ES5 用法，请参考附录一的 [React ES5、ES6+ 常见用法对照表](./Appendix01)。
