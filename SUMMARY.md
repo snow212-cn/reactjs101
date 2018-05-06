@@ -30,7 +30,9 @@
   * [Redux 实战入门](/Ch07/react-redux-real-world-example.md)
 
 * [八、Container 与 Presentational Components](/Ch08/readme.md)
+
   * [Container 与 Presentational Components 入门](/Ch08/container-presentational-component-.md)
+
 * [九、实战教学：用 React + Router + Redux + ImmutableJS 写一个 Github 查询应用](/Ch09/readme.md)
   * [用 React + Router + Redux + ImmutableJS 写一个 Github 查询应用](/Ch09/react-router-redux-github-finder.md)
 * [十、实战教学：用 React + Redux + Node（Isomorphic JavaScript）开发食谱分享网站](/Ch10)
