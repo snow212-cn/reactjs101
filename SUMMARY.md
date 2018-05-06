@@ -24,9 +24,11 @@
   * [ImmutableJS 入门教学](/Ch06/react-immutable-introduction.md)
 
 * [七、Flux/Redux](/Ch07/readme.md)
+
   * [Flux 基础概念与实战入门](/Ch07/react-flux-introduction.md)
   * [Redux 基础概念](/Ch07/react-redux-introduction.md)
   * [Redux 实战入门](/Ch07/react-redux-real-world-example.md)
+
 * [八、Container 与 Presentational Components](/Ch08/readme.md)
   * [Container 与 Presentational Components 入门](/Ch08/container-presentational-component-.md)
 * [九、实战教学：用 React + Router + Redux + ImmutableJS 写一个 Github 查询应用](/Ch09/readme.md)
@@ -38,7 +40,6 @@
 * [附录二、用 React Native + Firebase 开发跨平台行动应用程式（Native Mobile App）](/Appendix02/README.md)
 * [附录三、React 测试入门教学](/Appendix03/README.md)
 * [附录四、GraphQL/Relay 初体验](/Appendix04/README.md)
-
 
 
 
