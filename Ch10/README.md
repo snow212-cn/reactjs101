@@ -4,4 +4,4 @@
 2. [用 React + Redux + Node（Isomorphic JavaScript）开发一个食谱分享网站](react-router-redux-node-isomorphic-javascript-open-cook.md)
 
 ## :door: 任意门
-| [回首页](../../../tree/zh-CN/) |
+| [回首页](../summary.html) |

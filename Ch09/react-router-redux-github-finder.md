@@ -1,10 +1,10 @@
 # 用 React + Router + Redux + ImmutableJS 写一个 Github 查询应用
 
 ## 前言
-学了一身本领后，本章将带大家完成一个单页式应用程式（Single Page Application），整合 React + Redux + ImmutableJS + React Router 搭配 Github API 制作一个简单的 Github 使用者查询应用，实际体验一下开发 React App 的感受。
+学了一身本领后，本章将带大家完成一个单页式应用程序（Single Page Application），整合 React + Redux + ImmutableJS + React Router 搭配 Github API 制作一个简单的 Github 用户查询应用，实际体验一下开发 React App 的感受。
 
 ## 功能规划
-让访客可以使用 Github ID 搜寻 Github 使用者，展示 Github 使用者名称、follower、following、avatar_url 并可以返回首页。
+让访客可以使用 Github ID 搜寻 Github 用户，展示 Github 用户名称、follower、following、avatar_url 并可以返回首页。
 
 ## 使用技术
 
@@ -18,9 +18,9 @@
 8. Roboto Font from Google Font
 9. Github API（https://api.github.com/users/torvalds）
 
-不过要注意的是 Github API 若没有使用 App key 的话可以呼叫 API 的次数会受限
+不过要注意的是 Github API 若没有使用 App key 的话可以调用 API 的次数会受限
 
-## 专案成果截图
+## 项目成果截图
 
 ![React Redux](./images/demo-1.png "React Redux")
 
@@ -30,7 +30,7 @@
 ## 环境安装与设定
 1. 安装 Node 和 NPM
 
-2. 安装所需套件
+2. 安装所需包
 
 ```
 $ npm install --save react react-dom redux react-redux react-router immutable redux-immutable redux-actions whatwg-fetch redux-thunk material-ui react-tap-event-plugin
@@ -42,7 +42,7 @@ $ npm install --save-dev babel-core babel-eslint babel-loader babel-preset-es201
 
 接下来我们先设定一下开发文档。
 
-1. 设定 Babel 的设定档： `.babelrc`
+1. 设定 Babel 的配置文件： `.babelrc`
 
 	```javascript
 	{
@@ -55,7 +55,7 @@ $ npm install --save-dev babel-core babel-eslint babel-loader babel-preset-es201
 
 	```
 
-2. 设定 ESLint 的设定档和规则： `.eslintrc`
+2. 设定 ESLint 的配置文件和规则： `.eslintrc`
 
 	```javascript
 	{
@@ -69,7 +69,7 @@ $ npm install --save-dev babel-core babel-eslint babel-loader babel-preset-es201
 	}
 	```
 
-3. 设定 Webpack 设定档： `webpack.config.js`
+3. 设定 Webpack 配置文件： `webpack.config.js`
 
 	```javascript
 	// 让你可以动态插入 bundle 好的 .js 档到 .index.html
@@ -81,7 +81,7 @@ $ npm install --save-dev babel-core babel-eslint babel-loader babel-preset-es201
 	  inject: 'body',
 	});
 	
-	// entry 为进入点，output 为进行完 eslint、babel loader 转译后的档案位置
+	// entry 为进入点，output 为进行完 eslint、babel loader 转译后的文件位置
 	module.exports = {
 	  entry: [
 	    './src/index.js',
@@ -117,9 +117,9 @@ $ npm install --save-dev babel-core babel-eslint babel-loader babel-preset-es201
 	};
 	```
 
-太好了！这样我们就完成了开发环境的设定可以开始动手实作 `Github Finder` 应用程式了！	
+太好了！这样我们就完成了开发环境的设定可以开始动手实现 `Github Finder` 应用程序了！	
 
-## 动手实作
+## 动手实现
 
 1. Setup Mockup
 
@@ -189,7 +189,7 @@ $ npm install --save-dev babel-core babel-eslint babel-loader babel-preset-es201
 	export const CHAGE_USER_ID = 'CHAGE_USER_ID';
 	```	
 
-	现在我们来规划我们的 actions 的部份，这个范例我们使用到了 `redux-thunk` 来处理非同步的 action（若读者对于新的 Ajax 处理方式 fetch() 不熟悉可以先[参考这个文件](https://developer.mozilla.org/zh-TW/docs/Web/API/GlobalFetch/fetch)）。以下是 `src/actions/githubActions.js` 完整程式码：
+	现在我们来规划我们的 actions 的部分，这个范例我们使用到了 `redux-thunk` 来处理异步的 action（若读者对于新的 Ajax 处理方式 fetch() 不熟悉可以先[参考这个文件](https://developer.mozilla.org/zh-TW/docs/Web/API/GlobalFetch/fetch)）。以下是 `src/actions/githubActions.js` 完整代码：
 
 	```javascript
 	// 这边引入了 fetch 的 polyfill，考以让旧的浏览器也可以使用 fetch
@@ -208,7 +208,7 @@ $ npm install --save-dev babel-core babel-eslint babel-loader babel-preset-es201
 	  hideSpinner,
 	} from './uiActions';
 
-	// 这边是这个范例的重点，要学习我们之前尚未讲解的非同步 action 处理方式：不同于一般同步 action 直接发送 action，非同步 action 会回传一个带有 dispatch 参数的 function，里面使用了 Ajax（这里使用 fetch()）进行处理
+	// 这边是这个范例的重点，要学习我们之前尚未讲解的异步 action 处理方式：不同于一般同步 action 直接发送 action，异步 action 会返回一个带有 dispatch 参数的 function，里面使用了 Ajax（这里使用 fetch()）进行处理
 	// 一般和 API 互动的流程：INIT（开始请求/秀出 spinner）-> COMPLETE（完成请求/隐藏 spinner）-> ERROR（请求失败）
 	// 这次我们虽然没有使用 redux-actions 但我们还是维持标准 Flux Standard Action 格式：{ type: '', payload: {} }
 
@@ -226,7 +226,7 @@ $ npm install --save-dev babel-core babel-eslint babel-loader babel-preset-es201
 	  } 
 	}
 
-	// 同步 actions 处理，回传 action 物件
+	// 同步 actions 处理，返回 action 对象
 	export const changeUserId = (text) => ({ type: CHAGE_USER_ID, payload: { userId: text } });
 	```
 	
@@ -239,12 +239,12 @@ $ npm install --save-dev babel-core babel-eslint babel-loader babel-preset-es201
 	  HIDE_SPINNER,
 	} from '../constants/actionTypes';
 	
-	// 同步 actions 处理，回传 action 物件
+	// 同步 actions 处理，返回 action 对象
 	export const showSpinner = () => ({ type: SHOW_SPINNER});
 	export const hideSpinner = () => ({ type: HIDE_SPINNER});
 	```
 
-	透过于 `src/actions/index.js` 将我们 actions 输出
+	通过于 `src/actions/index.js` 将我们 actions 输出
 
 	```javascript
 	export * from './uiActions';
@@ -262,7 +262,7 @@ $ npm install --save-dev babel-core babel-eslint babel-loader babel-preset-es201
 	  spinnerVisible: false,
 	});
 
-	// 我们使用 userId 来暂存使用者 ID，data 存放 Ajax 取回的资料
+	// 我们使用 userId 来暂存用户 ID，data 存放 Ajax 取回的数据
 	export const GithubState = Immutable.fromJS({
 	  userId: '',
 	  data: {},
@@ -283,13 +283,13 @@ $ npm install --save-dev babel-core babel-eslint babel-loader babel-preset-es201
 	} from '../../constants/actionTypes';
 
 	const githubReducers = handleActions({ 
-	  // 当使用者按送出按钮，发出 GET_GITHUB_SUCCESS action 时将接收到的资料 merge 
+	  // 当用户按发送按钮，发出 GET_GITHUB_SUCCESS action 时将接收到的数据 merge 
 	  GET_GITHUB_SUCCESS: (state, { payload }) => (
 	    state.merge({
 	      data: payload.data,
 	    })
 	  ),  
-	  // 当使用者输入使用者 ID 会发出 CHAGE_USER_ID action 时将接收到的资料 merge 
+	  // 当用户输入用户 ID 会发出 CHAGE_USER_ID action 时将接收到的数据 merge 
 	  CHAGE_USER_ID: (state, { payload }) => (
 	    state.merge({
 	      'userId':
@@ -398,7 +398,7 @@ $ npm install --save-dev babel-core babel-eslint babel-loader babel-preset-es201
 
 	```javascript
 	import React from 'react';
-	// 使用 react-router 的 Link 当做超连结，传送 userId 当作 query
+	// 使用 react-router 的 Link 当做超链接，传送 userId 当作 query
 	import { Link } from 'react-router';
 	import RaisedButton from 'material-ui/RaisedButton';
 	import TextField from 'material-ui/TextField';
@@ -443,7 +443,7 @@ $ npm install --save-dev babel-core babel-eslint babel-loader babel-preset-es201
 	export default ResultPage;
 	```
 
-	以下是 `src/components/GithubBox/GithubBox.js`，负责撷取的 Github 资料呈现：
+	以下是 `src/components/GithubBox/GithubBox.js`，负责撷取的 Github 数据呈现：
 
 	```javascript
 	import React from 'react';
@@ -541,7 +541,7 @@ $ npm install --save-dev babel-core babel-eslint babel-loader babel-preset-es201
 	![React Redux](./images/demo-1.png "React Redux")
 
 ## 总结
-本章带领读者们从零开始整合 React + Redux + ImmutableJS + React Router 搭配 Github API 制作一个简单的 Github 使用者查询应用。下一章我们将挑战进阶应用，学习 Server Side Rendering 方面的知识，并用 React + Redux + Node（Isomorphic）开发一个食谱分享网站。
+本章带领读者们从零开始整合 React + Redux + ImmutableJS + React Router 搭配 Github API 制作一个简单的 Github 用户查询应用。下一章我们将挑战进阶应用，学习 Server Side Rendering 方面的知识，并用 React + Redux + Node（Isomorphic）开发一个食谱分享网站。
 
 ## 延伸阅读
 
@@ -556,6 +556,6 @@ $ npm install --save-dev babel-core babel-eslint babel-loader babel-preset-es201
 9. [传统 Ajax 已死，Fetch 永生](https://github.com/camsong/blog/issues/2)
 
 ## :door: 任意门
-| [回首页](../../../tree/zh-CN/) | [上一章：Container 与 Presentational Components 入门](../Ch08/container-presentational-component-.md) | [下一章：React Redux Sever Rendering（Isomorphic JavaScript）入门](../Ch10/react-redux-server-rendering-isomorphic-javascript.md) |
+| [回首页](../summary.html) | [上一章：Container 与 Presentational Components 入门](../Ch08/container-presentational-component-.md) | [下一章：React Redux Sever Rendering（Isomorphic JavaScript）入门](../Ch10/react-redux-server-rendering-isomorphic-javascript.md) |
 
 | [勘误、提问或许愿](https://github.com/kdchang/reactjs101/issues) |

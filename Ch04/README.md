@@ -4,4 +4,4 @@
 2. [React Component 规格与生命周期（Life Cycle）](react-component-life-cycle.md)
 
 ## :door: 任意门
-| [回首页](../../../tree/zh-CN/) |
+| [回首页](../summary.html) |

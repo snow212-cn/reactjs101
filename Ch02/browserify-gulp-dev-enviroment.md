@@ -6,30 +6,30 @@
 
 [Browserify](http://browserify.org/)
 - 如同官网上说明的：`Browserify lets you require('modules') in the browser by bundling up all of your dependencies.
-`，Browserify 是一个可以让你在浏览器端也能使用像 Node 用的 [CommonJS](https://en.wikipedia.org/wiki/CommonJS) 规范一样，用输出（export）和引用（require）来管理模组。此外，也能使用许多在 NPM 中的模组
+`，Browserify 是一个可以让你在浏览器端也能使用像 Node 用的 [CommonJS](https://en.wikipedia.org/wiki/CommonJS) 规范一样，用输出（export）和引用（require）来管理模块。此外，也能使用许多在 NPM 中的模块
 
 [Gulp](http://gulpjs.com/)
-- `Gulp` 是一个前端任务工具自动化管理工具。随着前端工程的发展（Task Runner），我们在开发前端应用程式时有许多工作是必须重复进行，例如：打包文件、uglify、将 LESS 转译成一般的 CSS 的档案，转译 ES6 语法等工作。若是使用一般手动的方式，往往会造成效率的低下，所以透过像是 [Grunt](http://gruntjs.com/)、Gulp 这类的 Task Runner 不但可以提升效率，也可以更方便管理这些任务。由于 Gulp 是透过 pipeline 方式来处理档案，在使用上比起 Grunt 的方式直观许多，所以这边我们主要讨论的是 Gulp
+- `Gulp` 是一个前端任务工具自动化管理工具。随着前端工程的发展（Task Runner），我们在开发前端应用程序时有许多工作是必须重复进行，例如：打包文件、uglify、将 LESS 转译成一般的 CSS 的文件，转译 ES6 语法等工作。若是使用一般手动的方式，往往会造成效率的低下，所以通过像是 [Grunt](http://gruntjs.com/)、Gulp 这类的 Task Runner 不但可以提升效率，也可以更方便管理这些任务。由于 Gulp 是通过 pipeline 方式来处理文件，在使用上比起 Grunt 的方式直观许多，所以这边我们主要讨论的是 Gulp
 
 [Babelify](https://github.com/babel/babelify)
 - `Babelify` 是一个使用 Browserify 进行 Babel 转换的外挂，你可以想成是一个翻译机，可以将 React 中的 `JSX` 或 `ES6` 语法转成浏览器相容的 `ES5` 语法
 
 初步了解了三种工具的概念后，接下来我们就开始我们的环境设置：
-1. 若是电脑中尚未安装 [Node](https://zh.wikipedia.org/zh-tw/Node.js)（Node.js 是一个开放原始码、跨平台的、可用于伺服器端和网路应用的 Google V8 引擎执行执行环境）和 NPM（Node 套件管理器 Node Package Manager。是一个以 JavaScript 编写的软件套件管理系统，预设环境为 Node.js，从 Node.js 0.6.3 版本开始，npm 被自动附带在安装包中）的话，请先 [上官网安装](https://nodejs.org/en/)
+1. 若是电脑中尚未安装 [Node](https://zh.wikipedia.org/zh-tw/Node.js)（Node.js 是一个开放源码、跨平台的、可用于服务器端和网络应用的 Google V8 引擎执行执行环境）和 NPM（Node 包管理器 Node Package Manager。是一个以 JavaScript 编写的软件包管理系统，默认环境为 Node.js，从 Node.js 0.6.3 版本开始，npm 被自动附带在安装包中）的话，请先 [上官网安装](https://nodejs.org/en/)
 
 2. 用 `npm` 安装 `browserify`
 
-3. 用 `npm` 安装 `gulp`、`gulp-concat`、`gulp-html-replace`、`gulp-streamify`、`gulp-uglify`、`watchify`、`vinyl-source-stream` 开发环境用的套件（development dependencies）
+3. 用 `npm` 安装 `gulp`、`gulp-concat`、`gulp-html-replace`、`gulp-streamify`、`gulp-uglify`、`watchify`、`vinyl-source-stream` 开发环境用的包（development dependencies）
 
 	```
-	// 使用 npm install --save-dev 会将安装的套件名称和版本存放到 package.json 的 devDependencies 栏位中
+	// 使用 npm install --save-dev 会将安装的包名称和版本存放到 package.json 的 devDependencies 字段中
 	$ npm install --save-dev gulp gulp-concat gulp-html-replace gulp-streamify gulp-uglify watchify vinyl-source-stream  
 	```
 
-3. 安装 `babelify`、`babel-preset-es2015`、`babel-preset-react`，转译 `ES6` 和 `JSX` 开发环境用的套件，并于根目录底下设定 `.babelrc`，设定转译规则（presets：es2015、react）和使用的外挂
+3. 安装 `babelify`、`babel-preset-es2015`、`babel-preset-react`，转译 `ES6` 和 `JSX` 开发环境用的包，并于根目录底下设定 `.babelrc`，设定转译规则（presets：es2015、react）和使用的外挂
 
 	```
-	// 使用 npm install --save-dev 会将安装的套件名称和版本存放到 package.json 的 devDependencies 栏位中
+	// 使用 npm install --save-dev 会将安装的包名称和版本存放到 package.json 的 devDependencies 字段中
 	$ npm install --save-dev babelify babel-preset-es2015 babel-preset-react
 	```
 
@@ -50,7 +50,7 @@
 	$ npm install --save react react-dom
 	```
 
-6. 撰写 Component
+6. 编写 Component
 
 	```js
     // filename: ./app/index.js
@@ -96,7 +96,7 @@
 
 	```js
     // filename: gulpfile.js
-	// 引入所有需要的档案
+	// 引入所有需要的文件
 	const gulp = require('gulp');
 	const uglify = require('gulp-uglify');
 	const htmlreplace = require('gulp-html-replace');
@@ -105,7 +105,7 @@
 	const watchify = require('watchify');
 	const babel = require('babelify');
 	const streamify = require('gulp-streamify');
-	// 档案位置参数
+	// 文件位置参数
 	const path = {
 	  HTML: 'index.html',
 	  MINIFIED_OUT: 'bundle.min.js',
@@ -115,12 +115,12 @@
 	  DEST_SRC: 'dist/src',
 	  ENTRY_POINT: './app/index.js'
 	};
-	// 复制 html 到 dist 资料夹中
+	// 复制 html 到 dist 文件夹中
 	gulp.task('copy', function(){
 	  gulp.src(path.HTML)
 	    .pipe(gulp.dest(path.DEST));
 	});
-	// 监听档案是否有变化，若有变化则重新编译一次
+	// 监听文件是否有变化，若有变化则重新编译一次
 	gulp.task('watch', function() {
 	  gulp.watch(path.HTML, ['copy']);
 	var watcher  = watchify(browserify({
@@ -149,7 +149,7 @@
 	    .pipe(streamify(uglify(path.MINIFIED_OUT)))
 	    .pipe(gulp.dest(path.DEST_BUILD));
 	});
-	// 将 script 引用换成 production 的档案
+	// 将 script 引用换成 production 的文件
 	gulp.task('replaceHTML', function(){
 	  gulp.src(path.HTML)
 	    .pipe(htmlreplace({
@@ -168,25 +168,25 @@
 	```
 
 8. 成果展示
-	到目前为止我们的资料夹的结构应该会是这样：
+	到目前为止我们的文件夹的结构应该会是这样：
 
 	![一看就懂的 React 开发环境建置与 Webpack 入门教学](./images/browserify-folder-pregulp.png "一看就懂的 React 开发环境建置与 Webpack 入门教学")
 
-	接下来我们透过在终端机（terminal）下 `gulp` 指令来处理我们设定好的任务：
+	接下来我们通过在终端机（terminal）下 `gulp` 指令来处理我们设定好的任务：
 
 	```
 	// 当只有输入 gulp 没有输入任务名称时，gulp 会自动执行 default 的任务，我们这边会执行 `watch` 和 `copy` 的任务，前者会监听 `./app/index.js` 是否有改变，有的话则更新。后者则是会把 `index.html` 复制到 `./dist/index.html`
 	$ gulp
 	```
 
-	当执行完 `gulp` 后，我们可以发现多了一个 `dist` 资料夹
+	当执行完 `gulp` 后，我们可以发现多了一个 `dist` 文件夹
 
 	![一看就懂的 React 开发环境建置与 Webpack 入门教学](./images/browserify-folder-possgulp.png "一看就懂的 React 开发环境建置与 Webpack 入门教学")
 
-	如果我们是要进行 `production` 的应用程式开发的话，我们可以执行： 
+	如果我们是要进行 `production` 的应用程序开发的话，我们可以执行： 
 
 	```
-	// 当输入 gulp production 时，gulp 会执行 production 的任务，我们这边会执行 `replaceHTML`、`build` 和 `apply-prod-environment` 的任务，`build` 任务会进行转译和 `uglify`。`replaceHTML` 会取代 `index.html` 注解中的 `<script>` 引入档案，变成引入压缩和 `uglify` 后的 `./dist/build/bundle.min.js`。`apply-prod-environment` 则是会更改 `NODE_ENV` 变数，让环境设定改为 `production`，有兴趣的读者可以参考[React 官网说明](https://facebook.github.io/react/downloads.html)
+	// 当输入 gulp production 时，gulp 会执行 production 的任务，我们这边会执行 `replaceHTML`、`build` 和 `apply-prod-environment` 的任务，`build` 任务会进行转译和 `uglify`。`replaceHTML` 会取代 `index.html` 注解中的 `<script>` 引入文件，变成引入压缩和 `uglify` 后的 `./dist/build/bundle.min.js`。`apply-prod-environment` 则是会更改 `NODE_ENV` 变量，让环境设定改为 `production`，有兴趣的读者可以参考[React 官网说明](https://facebook.github.io/react/downloads.html)
 	$ gulp production
 	```
 
@@ -195,6 +195,6 @@
 (image via [srinisoundar](https://cdn-images-1.medium.com/max/477/1*qhI4E_g3TDOK0uu1VAJlCQ.png)、[sitepoint](https://d2sis3lil8ndrq.cloudfront.net/screencasts/46e215cd-2eb3-4cf0-b699-713977a2b644.png)、[keyholesoftware](https://keyholesoftware.com/wp-content/uploads/Browserify-5.png)、[survivejs](http://survivejs.com/webpack/images/webpack.png))
 
 ## :door: 任意门
-| [回首页](../../../tree/zh-CN/) | 
+| [回首页](../summary.html) | 
 
 | [勘误、提问或许愿](https://github.com/kdchang/reactjs101/issues) |

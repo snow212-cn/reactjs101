@@ -4,4 +4,4 @@
 2. [JSX 简明入门教学指南](../Ch03/react-jsx-introduction.md)
 
 ## :door: 任意门
-| [回首页](../../../tree/zh-CN/) |
+| [回首页](../summary.html) |

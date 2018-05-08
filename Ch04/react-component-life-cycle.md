@@ -4,7 +4,7 @@
 经过前面的努力相信目前读者对于用 React 开发一些简单的组件（Component）已经有一定程度的掌握了，现在我们将更细部探讨 React Component 的规格和其生命周期。
 
 ## React Component 规格
-若读者还有印象的话，我们前面介绍 React 特性时有描述 React 的主要撰写方式有两种：一种是使用 ES6 Class，另外一种是 Stateless Components，使用 Functional Component 的写法，单纯渲染 UI。这边再帮大家复习一下上一个章节的简单范例：
+若读者还有印象的话，我们前面介绍 React 特性时有描述 React 的主要编写方式有两种：一种是使用 ES6 Class，另外一种是 Stateless Components，使用 Functional Component 的写法，单纯渲染 UI。这边再帮大家复习一下上一个章节的简单范例：
 
 1. 使用 ES6 的 Class（可以进行比较复杂的操作和组件生命周期的控制，相对于 stateless components 耗费资源）
 
@@ -24,7 +24,7 @@
 		name: React.PropTypes.string,
 	}
 
-	// Prop 预设值，若对应 props 没传入值将会使用 default 值，为每个实例化 Component 共用的值
+	// Prop 默认值，若对应 props 没传入值将会使用 default 值，为每个实例化 Component 共用的值
 	MyComponent.defaultProps = {
 	 	name: '',
 	}
@@ -33,7 +33,7 @@
 	ReactDOM.render(<MyComponent name="Mark"/>, document.getElementById('app'));
 	```
 
-2. 使用 Functional Component 写法（单纯地 render UI 的 stateless components，没有内部状态、没有实作物件和 ref，没有生命周期函数。若非需要控制生命周期的话建议多使用 stateless components 获得比较好的效能）
+2. 使用 Functional Component 写法（单纯地 render UI 的 stateless components，没有内部状态、没有实现对象和 ref，没有生命周期函数。若非需要控制生命周期的话建议多使用 stateless components 获得比较好的性能）
 
 	```javascript
 	// 使用 arrow function 来设计 Functional Component 让 UI 设计更单纯（f(D) => UI），减少副作用（side effect）
@@ -46,7 +46,7 @@
 		name: React.PropTypes.string,
 	}
 
-	// Prop 预设值，若对应 props 没传入值将会使用 default 值
+	// Prop 默认值，若对应 props 没传入值将会使用 default 值
 	MyComponent.defaultProps = {
 		name: '',
 	}
@@ -55,7 +55,7 @@
 	ReactDOM.render(<MyComponent name="Mark"/>, document.getElementById('app'));
 	```
 
-值得留意的是在 ES6 Class 中 `render()` 是唯一必要的方法（但要注意的是请保持 `render()` 的纯粹，不要在里面进行 `state` 修改或是使用非同步方法和浏览器互动，若需非同步互动请于 `componentDidMount()` 操作），而 Functional Component 目前允许 `return null` 值。 喔对了，在 ES6 中也不支援 `mixins` 复用其他组件的方法了。
+值得留意的是在 ES6 Class 中 `render()` 是唯一必要的方法（但要注意的是请保持 `render()` 的纯粹，不要在里面进行 `state` 修改或是使用异步方法和浏览器互动，若需异步互动请于 `componentDidMount()` 操作），而 Functional Component 目前允许 `return null` 值。 喔对了，在 ES6 中也不支持 `mixins` 复用其他组件的方法了。
 
 ## React Component 生命周期
 React Component，就像人会有生老病死一样有生命周期。一般而言 Component 有以下三种生命周期的状态：
@@ -70,8 +70,8 @@ React Component，就像人会有生老病死一样有生命周期。一般而�
 	- componentWillMount()
 	- componentDidMount()
 2. Updating
-	- componentWillReceiveProps(object nextProps)：已载入组件收到新的参数时呼叫
-	- shouldComponentUpdate(object nextProps, object nextState)：组件判断是否重新渲染时呼叫，起始不会呼叫除非呼叫 forceUpdate()
+	- componentWillReceiveProps(object nextProps)：已载入组件收到新的参数时调用
+	- shouldComponentUpdate(object nextProps, object nextState)：组件判断是否重新渲染时调用，起始不会调用除非调用 forceUpdate()
 	- componentWillUpdate(object nextProps, object nextState)
 	- componentDidUpdate(object prevProps, object prevState)
 3. Unmounting
@@ -143,7 +143,7 @@ ReactDOM.render(<MyComponent />, document.getElementById('app'));
 
 ![React Component 规格与生命周期](./images/react-lifecycle.png)
 
-其中特殊处理的函数 `shouldComponentUpdate`，目前预设 `return true`。若你想要优化效能可以自己编写判断方式，若采用 `immutable` 可以使用 `nextProps === this.props` 比对是否有变动：
+其中特殊处理的函数 `shouldComponentUpdate`，目前默认 `return true`。若你想要优化性能可以自己编写判断方式，若采用 `immutable` 可以使用 `nextProps === this.props` 比对是否有变动：
 
 ```javascript
 shouldComponentUpdate(nextProps, nextState) {
@@ -151,8 +151,8 @@ shouldComponentUpdate(nextProps, nextState) {
 }
 ```
 
-## Ajax 非同步处理
-若有需要进行 Ajax 非同步处理，请在 `componentDidMount` 进行处理。以下透过 `jQuery` 执行 `Ajax` 取得 `Github API`　资料当做范例：
+## Ajax 异步处理
+若有需要进行 Ajax 异步处理，请在 `componentDidMount` 进行处理。以下通过 `jQuery` 执行 `Ajax` 取得 `Github API`　数据当做范例：
 
 HTML Markup：
 
@@ -218,7 +218,7 @@ ReactDOM.render(
 <a class="jsbin-embed" href="http://jsbin.com/kupusa/embed?html,js,output">点击看详细范例</a><script src="http://static.jsbin.com/js/embed.min.js?3.39.12"></script>
 
 ## 总结
-以上介绍了 React Component 规格与生命周期（Life Cycle）的概念，其中生命周期的概念对于初学者来说可能会比较抽象，建议读者跟着范例动手实作。接下来我们将更进一步介绍 `React Router` 让读者感受一下单页式应用程式（single page application）的设计方式。
+以上介绍了 React Component 规格与生命周期（Life Cycle）的概念，其中生命周期的概念对于初学者来说可能会比较抽象，建议读者跟着范例动手实现。接下来我们将更进一步介绍 `React Router` 让读者感受一下单页式应用程序（single page application）的设计方式。
 
 ## 延伸阅读
 1. [Component Specs and Lifecycle](https://facebook.github.io/react/docs/component-specs.html#lifecycle-methods)
@@ -226,6 +226,6 @@ ReactDOM.render(
 （image via [react-lifecycle](http://imgh.us/react-lifecycle.svg)）
 
 ## :door: 任意门
-| [回首页](../../../tree/zh-CN/) | [上一章：Props、State、Refs 与表单处理](../Ch04/props-state-introduction.md) | [下一章：React Router 入门实战教学](../Ch05/react-router-introduction.md) |
+| [回首页](../summary.html) | [上一章：Props、State、Refs 与表单处理](../Ch04/props-state-introduction.md) | [下一章：React Router 入门实战教学](../Ch05/react-router-introduction.md) |
 
 | [勘误、提问或许愿](https://github.com/kdchang/reactjs101/issues) |

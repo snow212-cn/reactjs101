@@ -4,13 +4,13 @@
 如果你是从一开始跟着我们踏出 React 旅程的读者真的恭喜你，也谢谢你一路跟着我们的学习脚步，对一个初学者来说这一段路并不容易。本章是扣除附录外我们最后一个正式章节的范例，也是规模最大的一个，在这个章节中我们要整合过去所学和添加一些知识开发一个可以登入会员并分享食谱的社群网站，Les's GO！
 
 ## 需求规划
-让使用者可以登入会员并分享食谱的社群网站
+让用户可以登入会员并分享食谱的社群网站
 
 ## 功能规划
 1. React Router / Redux / Immutable / Server Render / Async API
-2. 使用者登入/登出（JSON Web Token）
-3. CRUD 表单资料处理
-4. 资料库串接(ORM/MongoDB)
+2. 用户登入/登出（JSON Web Token）
+3. CRUD 表单数据处理
+4. 数据库串接(ORM/MongoDB)
 
 ## 使用技术
 1. React
@@ -24,7 +24,7 @@
 9. Webpack
 10. UUID
 
-## 专案成果截图
+## 项目成果截图
 
 ![用 React + Redux + Node（Isomorphic）开发一个食谱分享网站](./images/open-cook-demo-1.png "用 React + Redux + Node（Isomorphic）开发一个食谱分享网站")
 
@@ -37,7 +37,7 @@
 ## 环境安装与设定
 1. 安装 Node 和 NPM
 
-2. 安装所需套件
+2. 安装所需包
 
 ```
 $ npm install --save react react-dom redux react-redux react-router immutable redux-immutable redux-actions redux-promise bcrypt body-parser cookie-parser debug express immutable jsonwebtoken mongoose morgan passport passport-local react-router-bootstrap axios serve-favicon validator uuid
@@ -49,7 +49,7 @@ $ npm install --save-dev babel-core babel-eslint babel-loader babel-preset-es201
 
 接下来我们先设定一下开发文档。
 
-1. 设定 Babel 的设定档： `.babelrc`
+1. 设定 Babel 的配置文件： `.babelrc`
 
 	```javascript
 	{
@@ -62,7 +62,7 @@ $ npm install --save-dev babel-core babel-eslint babel-loader babel-preset-es201
 
 	```
 
-2. 设定 ESLint 的设定档和规则： `.eslintrc`
+2. 设定 ESLint 的配置文件和规则： `.eslintrc`
 
 	```javascript
 	{
@@ -76,7 +76,7 @@ $ npm install --save-dev babel-core babel-eslint babel-loader babel-preset-es201
 	}
 	```
 
-3. 设定 Webpack 设定档： `webpack.config.js`：
+3. 设定 Webpack 配置文件： `webpack.config.js`：
 
 	```javascript
 	import webpack from 'webpack';
@@ -125,13 +125,13 @@ export default ({
 });
 ```	
 
-太好了！这样我们就完成了开发环境的设定可以开始动手实作我们的食谱分享社群应用程式了！	
+太好了！这样我们就完成了开发环境的设定可以开始动手实现我们的食谱分享社群应用程序了！	
 
-同时我们也初步设计我们资料夹结构，主要我们将资料夹分为 `client`、`common`、`server`：
+同时我们也初步设计我们文件夹结构，主要我们将文件夹分为 `client`、`common`、`server`：
 
 ![用 React + Redux + Node（Isomorphic）开发一个食谱分享网站](./images/open-cook-demo-folder.png "用 React + Redux + Node（Isomorphic）开发一个食谱分享网站")
 
-## 动手实作
+## 动手实现
 
 首先我们先进行 `src/client/index.js` 的设计：
 
@@ -141,7 +141,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { browserHistory, Router } from 'react-router';
 import { fromJS } from 'immutable';
-// 我们的 routing 放置在 common 资料夹中的 routes
+// 我们的 routing 放置在 common 文件夹中的 routes
 import routes from '../common/routes';
 import configureStore from '../common/store/configureStore';
 import { checkAuth } from '../common/actions';
@@ -159,7 +159,7 @@ ReactDOM.render(
 );
 ```
 
-由于 Node 端要到新版对于 ES6 支援较好，所以先用 `babel-register` 在 `src/server/index.js` 去即时转译 `server.js`，但不建议在 `production` 环境使用。
+由于 Node 端要到新版对于 ES6 支持较好，所以先用 `babel-register` 在 `src/server/index.js` 去即时转译 `server.js`，但不建议在 `production` 环境使用。
 
 ```javascript
 // use babel-register to precompile ES6 
@@ -168,7 +168,7 @@ require('./server');
 ```
 
 ```javascript
-// 引入 Express、mongoose（MongoDB ORM）以及相关 server 上使用的套件
+// 引入 Express、mongoose（MongoDB ORM）以及相关 server 上使用的包
 /* Server Packages */
 import Express from 'express';
 import bodyParser from 'body-parser';
@@ -176,7 +176,7 @@ import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
 import config from './config';
-// 引入后端 model 透过 model 和资料库互动 
+// 引入后端 model 通过 model 和数据库互动 
 import User from './models/user';
 import Recipe from './models/recipe';
 
@@ -200,10 +200,10 @@ import apiRoutes from './controllers/api.js';
 // 初始化 Express server
 const app = new Express();
 const port = process.env.PORT || 3000;
-// 连接到资料库，相关设定档案放在 config.database
+// 连接到数据库，相关设定文件放在 config.database
 mongoose.connect(config.database); // connect to database
 app.set('env', 'production');
-// 设定静态档案位置
+// 设定静态文件位置
 app.use('/static', Express.static(__dirname + '/public'));
 app.use(cookieParser());
 // use body parser so we can get info from POST and/or URL parameters
@@ -212,7 +212,7 @@ app.use(bodyParser.json());
 // use morgan to log requests to the console
 app.use(morgan('dev'));
 
-// 负责每次接受到 request 的处理函数，判断该如何处理和取得 initialState 整理后结合伺服器渲染页面传往前端
+// 负责每次接受到 request 的处理函数，判断该如何处理和取得 initialState 整理后结合服务器渲染页面传往前端
 const handleRender = (req, res) => {
   // Query our mock API asynchronously
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
@@ -289,7 +289,7 @@ app.use(webpackHotMiddleware(compiler));
 
 // 设计 API prefix，并使用 controller 中的 apiRoutes 进行处理
 app.use('/api', apiRoutes);  
-// 使用伺服器端 handleRender 
+// 使用服务器端 handleRender 
 app.use(handleRender);
 app.listen(port, (error) => {
   if (error) {
@@ -300,7 +300,7 @@ app.listen(port, (error) => {
 });
 ```
 
-由于 Node 端要到新版对于 ES6 支援较好，所以先用 `babel-register` 在 `src/server/index.js` 去即时转译 `server.js`，但目前不建议在 `production` 环境使用。
+由于 Node 端要到新版对于 ES6 支持较好，所以先用 `babel-register` 在 `src/server/index.js` 去即时转译 `server.js`，但目前不建议在 `production` 环境使用。
 
 ```javascript
 // use babel-register to precompile ES6 syntax
@@ -308,13 +308,13 @@ require('babel-register');
 require('./server');
 ```
 
-现在我们来设计一下我们资料库的 Schema，在这边我们使用 MongoDB 的 ORM Mongoose，可以方便我们使用物件方式进行资料库的操作：
+现在我们来设计一下我们数据库的 Schema，在这边我们使用 MongoDB 的 ORM Mongoose，可以方便我们使用对象方式进行数据库的操作：
 
 ```javascript
 // 引入 mongoose 和 Schema
 import mongoose, { Schema } from 'mongoose';
 
-// 使用 mongoose.model 建立新的资料表，并将 Schema 传入
+// 使用 mongoose.model 建立新的数据表，并将 Schema 传入
 // 这边我们设计了食谱分享的一些基本要素，包括名称、描述、照片位置等
 export default mongoose.model('Recipe', new Schema({ 
     id: String,
@@ -330,8 +330,8 @@ export default mongoose.model('Recipe', new Schema({
 // 引入 mongoose 和 Schema
 import mongoose, { Schema } from 'mongoose';
 
-// 使用 mongoose.model 建立新的资料表，并将 Schema 传入
-// 这边我们设计了使用者的一些基本要素，包括名称、描述、照片位置等
+// 使用 mongoose.model 建立新的数据表，并将 Schema 传入
+// 这边我们设计了用户的一些基本要素，包括名称、描述、照片位置等
 export default mongoose.model('User', new Schema({ 
     id: Number,
     username: String, 
@@ -341,13 +341,13 @@ export default mongoose.model('User', new Schema({
 }));
 ```
 
-为了方便维护，我们把 API 的部份统一在 `src/server/controllers/api.js` 进行管理，这部份会涉及比较多 Node 和 mongoose 的操作，若读者尚不熟悉可以参考 [mongoose 官网](http://mongoosejs.com/)
+为了方便维护，我们把 API 的部分统一在 `src/server/controllers/api.js` 进行管理，这部分会涉及比较多 Node 和 mongoose 的操作，若读者尚不熟悉可以参考 [mongoose 官网](http://mongoosejs.com/)
 
 ```javascript
 import Express from 'express';
-// 引入 jsonwebtoken 套件 
+// 引入 jsonwebtoken 包 
 import jwt from 'jsonwebtoken';
-// 引入 User、Recipe Model 方便进行资料库操作
+// 引入 User、Recipe Model 方便进行数据库操作
 import User from '../models/user';
 import Recipe from '../models/recipe';
 import config from '../config';
@@ -357,7 +357,7 @@ const app = new Express();
 const apiRoutes = Express.Router();
 // 设定 JSON Web Token 的 secret variable
 app.set('superSecret', config.secret); // secret variable
-// 使用者登入 API ，依据使用 email 和 密码去验证，若成功则回传一个认证 token（时效24小时）我们把它存在 cookie 中，方便前后端存取。这边我们先不考虑太多资讯安全的议题
+// 用户登入 API ，依据使用 email 和 密码去验证，若成功则返回一个认证 token（时效24小时）我们把它存在 cookie 中，方便前后端存取。这边我们先不考虑太多信息安全的问题
 apiRoutes.post('/login', function(req, res) {
   // find the user
   User.findOne({
@@ -377,7 +377,7 @@ apiRoutes.post('/login', function(req, res) {
           expiresIn: 60 * 60 * 24 // expires in 24 hours
         });
         // return the information including token as JSON
-        // 若登入成功回传一个 json 讯息
+        // 若登入成功返回一个 json 消息
         res.json({
           success: true,
           message: 'Enjoy your token!',
@@ -388,7 +388,7 @@ apiRoutes.post('/login', function(req, res) {
     }
   });
 });
-// 初始化 api，一开始资料库尚未建立任何使用者，我们需要在浏览器输入 `http://localhost:3000/api/setup`，进行资料库初始化。这个动作将新增一个使用者、一份食谱，若是成功新增将回传一个 success 讯息
+// 初始化 api，一开始数据库尚未建立任何用户，我们需要在浏览器输入 `http://localhost:3000/api/setup`，进行数据库初始化。这个动作将新增一个用户、一份食谱，若是成功新增将返回一个 success 消息
 apiRoutes.get('/setup', (req, res) => {
   // create a sample user
   const sampleUser = new User({ 
@@ -415,7 +415,7 @@ apiRoutes.get('/setup', (req, res) => {
     })
   });
 });
-// 回传所有 recipes
+// 返回所有 recipes
 apiRoutes.get('/recipes', (req, res) => {
   Recipe.find({}, (err, recipes) => {
     res.status(200).json(recipes);
@@ -485,7 +485,7 @@ apiRoutes.put('/recipes/:id', (req, res) => {
     res.json({ success: true });      
   });
 });
-// remove recipe 根据 _id 删除食谱，若成功回传成功讯息
+// remove recipe 根据 _id 删除食谱，若成功返回成功消息
 apiRoutes.delete('/recipes/:id', (req, res) => {
   Recipe.remove({ _id: req.params.id }, (err, recipe) => {
     if (err) throw err;
@@ -496,7 +496,7 @@ apiRoutes.delete('/recipes/:id', (req, res) => {
 export default apiRoutes;
 ```
 
-设定整个 App 的 routing，我们主要页面有 `HomePageContainer`、`LoginPageContainer`、`SharePageContainer`，值得注意的是我们这边使用 [Higher Order Components](http://www.darul.io/post/2016-01-05_react-higher-order-components) （Higher Order Components 为一个函数， 接收一个 Component 后在 Class Component 的 render 中 return 回传入的 components）方式去确认使用者是否有登入，若有没登入则不能进入分享食谱页面，反之若已登入也不会再进到登入页面：
+设定整个 App 的 routing，我们主要页面有 `HomePageContainer`、`LoginPageContainer`、`SharePageContainer`，值得注意的是我们这边使用 [Higher Order Components](http://www.darul.io/post/2016-01-05_react-higher-order-components) （Higher Order Components 为一个函数， 接收一个 Component 后在 Class Component 的 render 中 return 返回入的 components）方式去确认用户是否有登入，若有没登入则不能进入分享食谱页面，反之若已登入也不会再进入登入页面：
 
 ```javascript
 import React from 'react';
@@ -535,7 +535,7 @@ export const UPDATE_RECIPE = 'UPDATE_RECIPE';
 export const DELETE_RECIPE = 'DELETE_RECIPE';
 ```
 
-设定 `src/actions/recipeActions.js`，我们这边使用 redux-promise，可以很容易使用非同步的行为 WebAPI：  
+设定 `src/actions/recipeActions.js`，我们这边使用 redux-promise，可以很容易使用异步的行为 WebAPI：  
 
 ```javascript
 import { createAction } from 'redux-actions';
@@ -573,7 +573,7 @@ export const hideSpinner = createAction('HIDE_SPINNER');
 export const setUi = createAction('SET_UI');
 ```
 
-设定 `src/actions/userActions.js`，处理使用者登入登出等行为：
+设定 `src/actions/userActions.js`，处理用户登入登出等行为：
 
 ```javascript
 import { createAction } from 'redux-actions';
@@ -631,7 +631,7 @@ import {
   completeLogout,
 } from '../actions';
 
-// getCookie 函数传入 key 回传 value
+// getCookie 函数传入 key 返回 value
 function getCookie(keyName) {
   var name = keyName + '=';
   const cookies = document.cookie.split(';');
@@ -648,7 +648,7 @@ function getCookie(keyName) {
 }
 
 export default {
-  // 呼叫后端登入 api
+  // 调用后端登入 api
   login: (dispatch, email, password) => {
     axios.post('/api/login', {
       email: email,
@@ -676,13 +676,13 @@ export default {
       dispatch(authError());
     });
   },
-  // 呼叫后端登出 api  
+  // 调用后端登出 api  
   logout: (dispatch) => {
     document.cookie = 'token=; ' + 'expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     dispatch(hideSpinner());  
     browserHistory.push('/'); 
   },
-  // 确认使用者是否登入    
+  // 确认用户是否登入    
   checkAuth: (dispatch, token) => {
     axios.post('/api/authenticate', {
       token: token,
@@ -706,7 +706,7 @@ export default {
     .catch((error) => {
     });
   },
-  // 呼叫新增食谱 api，记得附加上我们存在 cookies 的 token  
+  // 调用新增食谱 api，记得附加上我们存在 cookies 的 token  
   addRecipe: (dispatch, name, description, imagePath) => {
     const id = uuid.v4();
     axios.post('/api/recipes?token=' + getCookie('token'), {
@@ -729,7 +729,7 @@ export default {
     .catch(function (error) {
     });
   },
-  // 呼叫更新食谱 api，记得附加上我们存在 cookies 的 token  
+  // 调用更新食谱 api，记得附加上我们存在 cookies 的 token  
   updateRecipe: (dispatch, recipeId, name, description, imagePath) => {
     axios.put('/api/recipes/' + recipeId + '?token=' + getCookie('token'), {
       id: recipeId,
@@ -753,7 +753,7 @@ export default {
     .catch(function (error) {
     });
   },
-  // 呼叫删除食谱 api，记得附加上我们存在 cookies 的 token  
+  // 调用删除食谱 api，记得附加上我们存在 cookies 的 token  
   deleteRecipe: (dispatch, recipeId) => {
     axios.delete('/api/recipes/' + recipeId + '?token=' + getCookie('token'))
     .then((response) => {
@@ -799,7 +799,7 @@ const recipeReducers = handleActions({
 export default recipeReducers;
 ```
 
-以下是 `src/common/reducers/data/userReducers.js`，负责确认登入相关处理事项。注意的是由于登入是非同步执行，所以会有几个阶段的行为要做处理：
+以下是 `src/common/reducers/data/userReducers.js`，负责确认登入相关处理事项。注意的是由于登入是异步执行，所以会有几个阶段的行为要做处理：
 
 ```javascript
 import { handleActions } from 'redux-actions';
@@ -885,7 +885,7 @@ const uiReducers = handleActions({
 export default uiReducers;
 ```
 
-最后把所有 recipes 在 `src/common/reducers/index.js` 使用 `combineReducers` 整合在一起，注意的是我们整个 App 的资料流要维持 immutable： 
+最后把所有 recipes 在 `src/common/reducers/index.js` 使用 `combineReducers` 整合在一起，注意的是我们整个 App 的数据流要维持 immutable： 
 
 ```javascript
 import { combineReducers } from 'redux-immutable';
@@ -999,7 +999,7 @@ export default connect(
 )(AppBar);
 ```
 
-以下是 `src/components/Main/Main.js`，透过 route 机制让 AppBarContainer 可以成为整个 App 母模版：
+以下是 `src/components/Main/Main.js`，通过 route 机制让 AppBarContainer 可以成为整个 App 母模版：
 
 ```javascript
 import React from 'react';
@@ -1017,7 +1017,7 @@ const Main = (props) => (
 export default Main;
 ```
 
- 在 `checkAuth` 这个 Component 中，我们使用到了 Higher Order Components 的观念。Higher Order Components 为一个函数， 接收一个 Component 后在 Class Component 的 render 中 return 回传入的 components 方式去确认使用者是否有登入，若有没登入则不能进入分享食谱页面，反之若已登入也不会再进到登入页面：
+ 在 `checkAuth` 这个 Component 中，我们使用到了 Higher Order Components 的观念。Higher Order Components 为一个函数， 接收一个 Component 后在 Class Component 的 render 中 return 返回入的 components 方式去确认用户是否有登入，若有没登入则不能进入分享食谱页面，反之若已登入也不会再进入登入页面：
 
 ```javascript
 import React from 'react';
@@ -1144,7 +1144,7 @@ const LoginBox = ({
         bsSize="large" 
         block
       >
-        提交送出
+        提交发送
       </Button>
     </Form>
   </div>
@@ -1241,7 +1241,7 @@ export default connect(
 
 ```
 
-真正设计我们内部的食谱， `src/common/components/RecipeBox`，使用者登入的话可以修改和删除食谱：
+真正设计我们内部的食谱， `src/common/components/RecipeBox`，用户登入的话可以修改和删除食谱：
 
 ```javascript
 import React from 'react';
@@ -1315,7 +1315,7 @@ export default connect(
 ```
 
 
-设计我们分享食谱页面，这边我们把编辑食谱和新增分享一起共用了同一个 components，差别在于我们会判断 UI State 中的 `isEdit`， 决定相应处理方式。在中 `src/common/components/ShareBox/ShareBox.js`，可以让使用者登入的后修改和删除食谱：
+设计我们分享食谱页面，这边我们把编辑食谱和新增分享一起共用了同一个 components，差别在于我们会判断 UI State 中的 `isEdit`， 决定相应处理方式。在中 `src/common/components/ShareBox/ShareBox.js`，可以让用户登入的后修改和删除食谱：
 
 
 ```javascript
@@ -1367,7 +1367,7 @@ const ShareBox = (props) => {
         bsSize="large" 
         block
       >
-        提交送出
+        提交发送
       </Button>
     </Form>
   </div>);
@@ -1473,7 +1473,7 @@ export default connect(
 ![用 React + Redux + Node（Isomorphic）开发一个食谱分享网站](./images/open-cook-demo-1.png "用 React + Redux + Node（Isomorphic）开发一个食谱分享网站")
 
 ## 总结
-本章整合过去所学和添加一些后端资料库知识开发了一个可以登入会员并分享食谱的社群网站！快把你的成果和你的朋友分享吧！觉得意犹未尽？别忘了附录也很精采！最后，再次谢谢读者们支持我们一路走完了 React 开发学习之旅！然而前端技术变化很快，唯有不断自我学习才能持续成长。笔者才疏学浅，撰写学习心得或有疏漏，若有任何建议或提醒都欢迎和我说，大家一起加油：）
+本章整合过去所学和添加一些后端数据库知识开发了一个可以登入会员并分享食谱的社群网站！快把你的成果和你的朋友分享吧！觉得意犹未尽？别忘了附录也很精采！最后，再次谢谢读者们支持我们一路走完了 React 开发学习之旅！然而前端技术变化很快，唯有不断自我学习才能持续成长。笔者才疏学浅，编写学习心得或有疏漏，若有任何建议或提醒都欢迎和我说，大家一起加油：）
 
 ## 延伸阅读
 1. [joshgeller/react-redux-jwt-auth-example](https://github.com/joshgeller/react-redux-jwt-auth-example)
@@ -1503,6 +1503,6 @@ export default connect(
 MIT, Special thanks [Loading.io](http://loading.io/)
 
 ## :door: 任意门
-| [回首页](../../../tree/zh-CN/) | [上一章：React Redux Sever Rendering（Isomorphic JavaScript）入门](../Ch10/react-redux-server-rendering-isomorphic-javascript.md) | [下一章：附录一、React ES5、ES6+ 常见用法对照表](../../../tree/zh-CN/Appendix01) |
+| [回首页](../summary.html) | [上一章：React Redux Sever Rendering（Isomorphic JavaScript）入门](../Ch10/react-redux-server-rendering-isomorphic-javascript.md) | [下一章：附录一、React ES5、ES6+ 常见用法对照表](../summary.htmlAppendix01) |
 
 | [勘误、提问或许愿](https://github.com/kdchang/reactjs101/issues) |
