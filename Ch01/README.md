@@ -4,4 +4,4 @@
 2. [React 生态系入门简介](react-ecosystem-introduction.md)
 
 ## :door: 任意门
-| [回首页](../../../tree/zh-CN/) |
+| [回首页](../summary.html) |
