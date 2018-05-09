@@ -86,7 +86,7 @@ NPM（Node Package Manager）是 Node.js 下的主流包管理工具。在 NPM �
 [Flux](https://facebook.github.io/flux/) 是一个实现单向流的应用程序数据架构（architecture），同样是由 Facebook 推出，并和 React 专注于 View 的部分形成互补。而由 Dan Abramov 所开发的 [Redux](https://github.com/reactjs/redux) 被 React 开发社群认为是 Flux-like 更优雅的作法，也是目前主流搭配 React 的状态（State）管理工具。让你在开发复杂的应用程序时可以更方便管理你的状态（state）。
 
 ## ImmutableJS
-[ImmutableJS](https://facebook.github.io/immutable-js/)，是一个能让开发者建立不可变量据结构的函数库。建立不可变（immutable）数据结构不仅可以让状态可预测性更高，也可以提升程序的性能。
+[ImmutableJS](https://facebook.github.io/immutable-js/)，是一个能让开发者建立不可变数据结构的函数库。建立不可变（immutable）数据结构不仅可以让状态可预测性更高，也可以提升程序的性能。
 
 ## Isomorphic JavaScript
 Isomorphic JavaScript 是指前后端（Client/Server）共用相同部分的代码，让 JavaScript 应用可以同时执行在浏览器端和服务器端，在 React 中可以通过服务器端渲染（server side rendering）静态 HTML 的方式达到 Isomorphic JavaScript 效果，让 SEO 和执行性能更加提升并让前后端共用代码。而另一个常一起出现的 Universal JavaScript 一般定义更为广泛，系指可以运行在不同环境下的 JavaScript Code，并不局限于浏览器和服务器端。但要留意的是在 Github 和许多技术文章的分享上会把两者定义为同一件事情。
