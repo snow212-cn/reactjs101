@@ -10,14 +10,14 @@
 	- 用途：怎么看事情（Markup、外观）
 	- 是否让 Redux 意识到：否
 	- 取得数据方式：从 props 取得
-	- 改变量据方式：从 props 去调用 callback function
+	- 改变数据方式：从 props 去调用 callback function
   - 写入方式：手动处理
 
 2. Container Components
  - 用途：怎么做事情（撷取数据，更新 State）
  - 是否让 Redux 意识到：是
  - 取得数据方式：订阅 Redux State（store）
- - 改变量据方式：Dispatch Redux Action
+ - 改变数据方式：Dispatch Redux Action
  - 写入方式：从 React Redux 产生
 
  从上面的分析读者可以发现，两者最大的差别在于 `Component` 主要负责单纯的 UI 的渲染，而 `Container` 则负责和 Redux 的 store 沟通，作为 `Redux` 和 `Component` 之间的桥梁。这样的分法可以让程序架构和职责更清楚，所以接下来我们就使用上一章节的 Redux TodoApp 进行改造，改造成 Container 与 Presentational Components 模式。

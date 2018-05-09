@@ -127,7 +127,7 @@ MyComponent.defaultProps = {
 关于更多的 Validation 用法可以参考[官方网站](https://facebook.github.io/react/docs/reusable-components.html) 的说明。
 
 ## Component 就像个状态机（State Machine），而且也有生命周期（Life Cycle）
-Component 就像个状态机（State Machine），根据不同的 state（通过 `setState()` 修改）和 props（由父元素传入），Component 会出现对应的显示结果。而人有生老病死，组件也有生命周期。通过操作生命周期处理函数，可以在对应的时间点进行 Component 需要的处理，关于更详细的组件生命周期介绍我们会再下一个章节进行更一步说明。
+Component 就像个状态机（State Machine），根据不同的 state（通过 `setState()` 修改）和 props（由父元素传入），Component 会出现对应的显示结果。而人有生老病死，组件也有生命周期。通过操作生命周期处理函数，可以在对应的时间点进行 Component 需要的处理，关于更详细的组件生命周期介绍我们会在下个章节进一步说明。
 
 ## 一律重绘（Always Redraw）和单向数据流（Unidirectional Data Flow）
 在 React 世界中，props 和 state 是影响 React Component 长相的重要要素。其中 props 都是由父元素所传进来，不能更改，若要更改 props 则必须由父元素进行更改。而 state 则是根据用户互动而产生的不同状态，主要是通过 setState() 方法进行修改。当 React 发现 props 或是 state 更新时，就会重绘整个 UI。当然你也可以使用 forceUpdate() 去强迫重绘 Component。而 React 通过整合 Flux 或 Flux-like（例如：Redux）可以更具体实现单向数据流（Unidirectional Data Flow），让数据流的管理更为清晰。
