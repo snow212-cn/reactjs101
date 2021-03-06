@@ -3,7 +3,7 @@
 ## 前言
 上一节我们了解了 Redux 基本的概念和特性后，本章我们要实际动手用 Redux、React Redux 结合 ImmutableJS 开发一个简单的 Todo 应用。话不多说，那就让让我们开始吧！
 
-以下这张图表示了整个 React Redux App 的数据流程图（用户与 View 互动 => dispatch 出 Action => Reducers 依据 action tyoe 分配到对应处理方式，返回新的 state => 通过 React Redux 传送给 React，React 重新绘制 View）：
+以下这张图表示了整个 React Redux App 的数据流程图（用户与 View 互动 => dispatch 出 Action => Reducers 依据 action type 分配到对应处理方式，返回新的 state => 通过 React Redux 传送给 React，React 重新绘制 View）：
 
 ![React Redux](./images/redux-flow.png "React Redux")
 
