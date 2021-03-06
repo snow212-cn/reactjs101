@@ -192,7 +192,7 @@ export default handleActions({
 }, UiState); 
 ```
 
-虽然 Redux 本身仅会有一个 store，但 redux 本身有提供了 `combineReducers` 可以让我们切割我们 state 方便维护和管理。实上，state 的规划也是一们学问，通常需要不断地实现和工作团队讨论才能找到比较好的方式。不过这边要注意的是我们改使用了 `redux-immutable` 的 `combineReducers` 这样可以确保我们的 state 维持在 `Immutable` 的状态。		
+虽然 Redux 本身仅会有一个 store，但 redux 本身有提供了 `combineReducers` 可以让我们切割我们 state 方便维护和管理。事实上，state 的规划也是一们学问，通常需要不断地实作和工作团队讨论才能找到比较好的方式。不过这边要注意的是我们改使用了 `redux-immutable` 的 `combineReducers` 这样可以确保我们的 state 维持在 `Immutable` 的状态。		
 
 由于 Redux 官方也没有特别明确或严谨的规范。在一般情况我会将 reducers 分为 `data` 和单纯和 UI 有关的 `ui` state。但由于这边是比较简单的例子，我们最终只使用到 `src/reducers/data/todoReducers.js`。 
 
